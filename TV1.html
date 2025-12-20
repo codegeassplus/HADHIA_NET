@@ -10,38 +10,37 @@
 
     <style>
         :root {
-            --primary: #ffffff;     /* أبيض للنصوص والأزرار */
-            --secondary: #000000;   /* أسود للخلفيات الثانوية */
-            --accent: #ffffff;
-            --dark: #000000;        /* أسود رئيسي */
-            --light: #111111;       /* أسود فاتح قليلاً للخلفية */
-            --success: #00ff00;     /* أخضر للإشعارات (يمكن تغييره لأبيض لو حابب) */
-            --danger: #ff0000;      /* أحمر للمباشر */
-            --text: #ffffff;        /* نص أبيض */
-            --text-light: #ffffff;
-            --card-bg: #1e1e1e;     /* خلفية الكروت رمادي غامق */
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #7209b7;
+            --dark: #1e1e2e;
+            --light: #f8f9fa;
+            --success: #4cc9f0;
+            --danger: #f72585;
+            --text: #2b2d42;
+            --text-light: #f8f9fa;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --radius: 16px;
         }
         
-        /* الوضع الفاتح (الأبيض) عند التبديل */
-        .light-mode {
-            --primary: #000000;
-            --secondary: #ffffff;
-            --accent: #000000;
-            --dark: #ffffff;
-            --light: #f0f0f0;
-            --text: #000000;
-            --text-light: #000000;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        .dark-mode {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #7209b7;
+            --dark: #121212;
+            --light: #1e1e2e;
+            --text: #f8f9fa;
+            --text-light: #f8f9fa;
+            --card-bg: #2d2d3a;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Tajawal', sans-serif;
-            background: linear-gradient(135deg, var(--dark), var(--light));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--text);
             min-height: 100vh;
             padding-bottom: 70px;
@@ -63,7 +62,7 @@
         .header-content { display: flex; justify-content: space-between; align-items: center; }
         
         .logo { display: flex; align-items: center; gap: 10px; }
-        .logo i { font-size: 24px; color: var(--primary); }
+        .logo i { font-size: 24px; color: var(--success); }
         .logo h1 { font-size: 20px; font-weight: 700; }
         
         .theme-toggle {
@@ -82,7 +81,7 @@
         .video-container { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; }
         #video-player { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; }
         .player-controls { display: flex; justify-content: space-between; padding: 15px; background: var(--card-bg); }
-        .control-btn { background: var(--primary); color: var(--secondary); border: none; padding: 10px 20px; border-radius: 30px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s; }
+        .control-btn { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 30px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s; }
         .control-btn:hover { background: var(--accent); transform: translateY(-2px); }
 
         .search-section { margin: 20px 0; }
@@ -92,22 +91,22 @@
 
         .categories { display: flex; gap: 10px; overflow-x: auto; padding: 5px 0 15px; scrollbar-width: none; }
         .categories::-webkit-scrollbar { display: none; }
-        .category-btn { background: var(--card-bg); color: var(--text); border: 1px solid var(--primary); padding: 10px 20px; border-radius: 30px; white-space: nowrap; cursor: pointer; box-shadow: var(--shadow); transition: all 0.3s; }
-        .category-btn.active { background: var(--primary); color: var(--secondary); }
+        .category-btn { background: var(--card-bg); color: var(--text); border: none; padding: 10px 20px; border-radius: 30px; white-space: nowrap; cursor: pointer; box-shadow: var(--shadow); transition: all 0.3s; }
+        .category-btn.active { background: var(--primary); color: white; }
 
         .channels-section { margin: 20px 0; }
-        .section-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: var(--primary); }
+        .section-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
         .channels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
-        .channel-card { background: var(--card-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: all 0.3s; cursor: pointer; position: relative; border: 1px solid rgba(255,255,255,0.1); }
-        .channel-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.6); }
+        .channel-card { background: var(--card-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: all 0.3s; cursor: pointer; position: relative; }
+        .channel-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
         .channel-logo { width: 100%; height: 100px; object-fit: cover; border-bottom: 2px solid var(--primary); }
         .channel-info { padding: 12px; }
-        .channel-name { font-weight: 700; font-size: 14px; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text); }
+        .channel-name { font-weight: 700; font-size: 14px; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .channel-category { font-size: 12px; color: var(--primary); display: flex; align-items: center; gap: 5px; }
         .favorite-btn { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.6); color: white; border: none; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
         .favorite-btn.active { background: var(--danger); }
 
-        .toast { position: fixed; bottom: 80px; right: 20px; background: var(--success); color: black; padding: 12px 20px; border-radius: var(--radius); box-shadow: var(--shadow); z-index: 1000; opacity: 0; transform: translateY(20px); transition: all 0.3s; }
+        .toast { position: fixed; bottom: 80px; right: 20px; background: var(--success); color: white; padding: 12px 20px; border-radius: var(--radius); box-shadow: var(--shadow); z-index: 1000; opacity: 0; transform: translateY(20px); transition: all 0.3s; }
         .toast.show { opacity: 1; transform: translateY(0); }
 
         .loading { display: inline-block; width: 30px; height: 30px; border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: var(--primary); animation: spin 1s ease-in-out infinite; }
@@ -122,7 +121,6 @@
     </style>
 </head>
 <body>
-    <!-- باقي الـ HTML كما هو تمامًا (الهيدر، اللاعب، البحث، القنوات...) -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -130,13 +128,12 @@
                     <i class="fas fa-tv"></i>
                     <h1>القنوات المباشرة</h1>
                 </div>
-                <button class="theme-toggle" id="themeToggle"><i class="fas fa-sun"></i></button>
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
             </div>
         </div>
     </header>
 
     <main class="container">
-        <!-- نفس الهيكل السابق بالضبط -->
         <section class="player-section">
             <div class="player-container">
                 <div class="player-header">
@@ -180,14 +177,15 @@
 
         <section class="channels-section">
             <h2 class="section-title"><i class="fas fa-broadcast-tower"></i><span>القنوات المتاحة</span></h2>
-            <div class="channels-grid" id="channelsGrid"></div>
+            <div class="channels-grid" id="channelsGrid">
+                <!-- القنوات ستحمل من channels.json -->
+            </div>
         </section>
     </main>
 
     <div class="toast" id="toast">جاري تحميل القنوات...</div>
 
     <script>
-        // نفس الجافاسكريبت السابق تمامًا (مع تغيير اسم الكلاس إلى light-mode بدل dark-mode)
         let channelsData = [];
         let currentChannel = null;
         let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -200,7 +198,9 @@
                 if (!response.ok) throw new Error('لا يمكن الوصول إلى ملف القنوات');
                 channelsData = await response.json();
                 renderChannels();
-                if (channelsData.length > 0) playChannel(channelsData[0]);
+                if (channelsData.length > 0) {
+                    playChannel(channelsData[0]);
+                }
             } catch (err) {
                 document.getElementById('channelsGrid').innerHTML = `
                     <div style="grid-column: 1/-1; text-align:center; padding:50px; color:white;">
@@ -211,19 +211,158 @@
             }
         }
 
-        // باقي الدوال (renderChannels, playChannel, إلخ) نفسها تمامًا كما في النسخة السابقة
+        function renderChannels() {
+            const grid = document.getElementById('channelsGrid');
+            const search = document.getElementById('searchInput').value.toLowerCase();
 
-        document.getElementById('themeToggle').onclick = () => {
-            document.body.classList.toggle('light-mode');
-            const icon = document.querySelector('#themeToggle i');
-            if (document.body.classList.contains('light-mode')) {
-                icon.classList.replace('fa-sun', 'fa-moon');
-            } else {
-                icon.classList.replace('fa-moon', 'fa-sun');
+            const filtered = channelsData.filter(ch => {
+                const catMatch = currentCategory === 'all' || ch.category === currentCategory;
+                const searchMatch = ch.name.toLowerCase().includes(search);
+                return catMatch && searchMatch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#fff;">لا توجد قنوات مطابقة</div>`;
+                return;
             }
+
+            grid.innerHTML = '';
+            filtered.forEach(ch => {
+                const isFav = favorites.includes(ch.id);
+                const card = document.createElement('div');
+                card.className = 'channel-card';
+                card.innerHTML = `
+                    <button class="favorite-btn ${isFav ? 'active' : ''}" data-id="${ch.id}"><i class="fas fa-star"></i></button>
+                    <img src="${ch.logo}" alt="${ch.name}" class="channel-logo" onerror="this.src='https://via.placeholder.com/160x100?text=TV'">
+                    <div class="channel-info">
+                        <div class="channel-name">${ch.name}</div>
+                        <div class="channel-category"><i class="fas fa-tag"></i> ${getCategoryName(ch.category)}</div>
+                    </div>
+                `;
+                card.onclick = () => playChannel(ch);
+                grid.appendChild(card);
+            });
+
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.onclick = e => {
+                    e.stopPropagation();
+                    toggleFavorite(parseInt(btn.dataset.id));
+                };
+            });
+        }
+
+        function playChannel(ch) {
+            currentChannel = ch;
+            document.getElementById('current-channel').textContent = ch.name;
+            updateFavoriteButton();
+
+            const player = document.getElementById('video-player');
+            player.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100%;"><div class="loading"></div></div>';
+
+            setTimeout(() => {
+                if (ch.type === 'm3u8') playM3U8(ch.source);
+                else if (ch.type === 'youtube') playYouTube(ch.source);
+                else if (ch.type === 'iframe') playIframe(ch.source);
+            }, 500);
+
+            showToast(`جاري تشغيل: ${ch.name}`);
+
+            document.getElementById('openExternalBtn').style.display = ch.type === 'iframe' ? 'flex' : 'none';
+        }
+
+        function playM3U8(src) {
+            if (hls) hls.destroy();
+            const player = document.getElementById('video-player');
+            player.innerHTML = '<video id="video" controls autoplay style="width:100%;height:100%;"></video>';
+            const video = document.getElementById('video');
+
+            if (Hls.isSupported()) {
+                hls = new Hls();
+                hls.loadSource(src);
+                hls.attachMedia(video);
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = src;
+            }
+        }
+
+        function playYouTube(url) {
+            const id = url.match(/(?:v=|youtu\.be\/|embed\/)([^&#?]+)/)?.[1];
+            const player = document.getElementById('video-player');
+            if (id) {
+                player.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1" frameborder="0" allowfullscreen style="width:100%;height:100%;"></iframe>`;
+            } else {
+                player.innerHTML = '<div style="color:white;text-align:center;">رابط يوتيوب غير صالح</div>';
+            }
+        }
+
+        function playIframe(src) {
+            const player = document.getElementById('video-player');
+            player.innerHTML = `<iframe src="${src}" frameborder="0" allowfullscreen sandbox="allow-scripts allow-same-origin allow-presentation" style="width:100%;height:100%;"></iframe>`;
+        }
+
+        function toggleFavorite(id) {
+            if (favorites.includes(id)) {
+                favorites = favorites.filter(x => x !== id);
+                showToast('تم الإزالة من المفضلة');
+            } else {
+                favorites.push(id);
+                showToast('تم الإضافة إلى المفضلة');
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            renderChannels();
+            updateFavoriteButton();
+        }
+
+        function updateFavoriteButton() {
+            if (!currentChannel) return;
+            const btn = document.getElementById('favoriteChannelBtn');
+            const isFav = favorites.includes(currentChannel.id);
+            btn.innerHTML = isFav ? '<i class="fas fa-star"></i><span>إزالة من المفضلة</span>' : '<i class="far fa-star"></i><span>إضافة للمفضلة</span>';
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function getCategoryName(cat) {
+            const map = {
+                news: 'إخبارية', sport: 'رياضية', entertainment: 'ترفيهية',
+                kids: 'أطفال', religious: 'دينية', documentary: 'وثائقية', MBC: 'MBC'
+            };
+            return map[cat] || cat;
+        }
+
+        // الأحداث
+        document.getElementById('themeToggle').onclick = () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.querySelector('#themeToggle i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
         };
 
-        // باقي الأحداث كما هي
+        document.getElementById('searchInput').oninput = renderChannels;
+
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.dataset.category;
+                renderChannels();
+            };
+        });
+
+        document.getElementById('favoriteChannelBtn').onclick = () => {
+            if (currentChannel) toggleFavorite(currentChannel.id);
+        };
+
+        document.getElementById('openExternalBtn').onclick = () => {
+            if (currentChannel && currentChannel.type === 'iframe') {
+                window.open(currentChannel.source, '_blank');
+            }
+        };
 
         window.onload = loadChannels;
     </script>
