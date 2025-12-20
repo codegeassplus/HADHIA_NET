@@ -1,0 +1,578 @@
+[
+    {
+        "id": 1,
+        "name": "الجزيرة الإخبارية",
+        "category": "news",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2024/11/picsart_24-11-23_02-59-21-7254502805147498804649.png",
+        "type": "m3u8",
+        "source": "https://live-hls-apps-aja-v3-fa.getaj.net/AJA/index.m3u8"
+    },
+    {
+        "id": 42,
+        "name": "عدن المستقلة",
+        "category": "news",
+        "logo": "https://yt3.googleusercontent.com/fqpEmDB_C23nUBKg_QMLuDFpDbCfZ8kZWfgEVS2NDbxijrleqUjxWtO1quXNbzORhP-WposWqf8=s900-c-k-c0x00ffffff-no-rj",
+        "type": "iframe",
+        "source": "https://player.restream.io/?token=e711e1267bec4b918cdc79138b225105"
+    },
+    {
+        "id": 2,
+        "name": "العربية الإخبارية",
+        "category": "news",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_16-00-52-761.jpg",
+        "type": "m3u8",
+        "source": "https://live.alarabiya.net/alarabiapublish/alarabiya.smil/playlist.m3u8"
+    },
+    {
+        "id": 52,
+        "name": "يمن شباب",
+        "category": "news",
+        "logo": "https://mir-s3-cdn-cf.behance.net/projects/404/6a953024564441.55088673a269e.jpg",
+        "type": "m3u8",
+        "source": "https://starmenajo.com/hls/yemenshabab/index.m3u8"
+    },
+    {
+        "id": 56,
+        "name": "الأخبارية",
+        "category": "news",
+        "logo": "https://yt3.googleusercontent.com/aIdFsqZwUoaPjq6W40JgJrl6K_Q1TEcrRrdV_W5TJvYRhRncopBvGf1NgZ0r7lgz-d3aTwpLp68=s900-c-k-c0x00ffffff-no-rj",
+        "type": "m3u8",
+        "source": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-al-ekhbaria/297b3ef1cd0633ad9cfba7473a686a06/index.m3u8"
+    },
+    {
+        "id": 3,
+        "name": "بي بي سي عربية",
+        "category": "news",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-43-34-409.jpg",
+        "type": "m3u8",
+        "source": "https://vs-hls-pushb-ww.live.cf.md.bbci.co.uk/x=4/i=urn:bbc:pips:service:bbc_arabic_tv/pc_hd_abr_v2.m3u8"
+    },
+    {
+        "id": 4,
+        "name": "فرنسا 24",
+        "category": "news",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-45-10-629.jpg",
+        "type": "m3u8",
+        "source": "https://live.france24.com/hls/live/2037222/F24_AR_HI_HLS/master_5000.m3u8"
+    },
+    {
+        "id": 5,
+        "name": "MBC 1",
+        "category": "MBC",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2023/03/d8aad986d8b2d98ad984282029.png",
+        "type": "m3u8",
+        "source": "https://shls-live-ak.akamaized.net/out/v1/0965e4d7deae49179172426cbfb3bc5e/index_7.m3u8"
+    },
+    {
+        "id": 53,
+        "name": "ماجد",
+        "category": "kids",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA4gpfFMq51-iK__ihrNzUg-jdhhh7hA7S2w&s",
+        "type": "m3u8",
+        "source": "https://admn-live-cdn-lb.starzplayarabia.com/out/v1/admn_tv_enc/majid/majid_hls_nd/index.m3u8"
+    },
+    {
+        "id": 54,
+        "name": "Mbc Action",
+        "category": "MBC",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsZvWG4aCZhnlZoYp8dLVg9ZWDUQTuKHfCkw&s",
+        "type": "iframe",
+        "source": "https://www.web24iptv.online/pl/m?ch=mbca_2"
+    },
+    {
+        "id": 6,
+        "name": "قناة الاعتصام المحلية",
+        "category": "religious",
+        "logo": "https://yt3.googleusercontent.com/P6wZ5RbYXAgdEmlo6V6iwdsn1Y9JoHP5qUVvYSRpP8qCToYC061y_j4mRJeVOnm58vcEgRABANI=s160-c-k-c0x00ffffff-no-rj",
+        "type": "m3u8",
+        "source": "https://live20.bozztv.com/giatv/giatv-aletisamtv/aletisamtv/chunks.m3u8"
+    },
+    {
+        "id": 7,
+        "name": "سبيستون",
+        "category": "kids",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2023/03/picsart_23-03-03_13-07-34-468.jpg",
+        "type": "iframe",
+        "source": "https://can2025.aflam4you.net/playeraf.php?vid=3066&aflam_s=1&aflam_k=1144665654423324"
+    },
+    {
+        "id": 8,
+        "name": "القرآن الكريم",
+        "category": "religious",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984286297893229794263470870.jpg",
+        "type": "m3u8",
+        "source": "https://cdn-globecast.akamaized.net/live/eds/saudi_quran/hls_roku/index.m3u8"
+    },
+    {
+        "id": 9,
+        "name": "دبي الرياضية",
+        "category": "sport",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984281029901900757029355522.jpg",
+        "type": "m3u8",
+        "source": "https://dmitwlvvll.cdn.mgmlcdn.com/dubaisportshd/smil:dubaisportshd.smil/chunklist.m3u8"
+    },
+    {
+        "id": 10,
+        "name": "عمان الرياضية",
+        "category": "sport",
+        "logo": "https://yt3.googleusercontent.com/KGgosFqgJ81BHWY1nFrBMlHF2jEdwCvcKR4fwfXN9RujAG-6OoaP3wHcvq6WcM2JuXvRccC0U9Y=s900-c-k-c0x00ffffff-no-rj",
+        "type": "m3u8",
+        "source": "https://partneta.cdn.mgmlcdn.com/omsport/smil:omsport.stream.smil/chunklist_b900000.m3u8"
+    },
+    {
+        "id": 11,
+        "name": "عالم غامبول",
+        "category": "kids",
+        "logo": "https://upload.wikimedia.org/wikipedia/ar/3/32/The_Amazing_World_of_Gumball%28wikiar%29.png",
+        "type": "youtube",
+        "source": "https://youtu.be/W8a4yXFozs0"
+    },
+    {
+        "id": 12,
+        "name": "توم وجيري",
+        "category": "kids",
+        "logo": "https://aboutmsr.com/wp-content/uploads/2025/04/IMG_5153.webp",
+        "type": "youtube",
+        "source": "https://youtu.be/rEKifG2XUZg"
+    },
+    {
+        "id": 13,
+        "name": "طيور الجنة",
+        "category": "kids",
+        "logo": "https://play-lh.googleusercontent.com/exWWqBy0k0q4PjS0B7g2KgGWPuPZ4pz2pvDs6jmzHSPcFYrYCHKxAZthpd5gLzsV7g=w600-h300-pc0xffffff-pd",
+        "type": "youtube",
+        "source": "https://youtu.be/dNM1soKIksU"
+    },
+    {
+        "id": 57,
+        "name": "قناة كارتون نتورك بالعربية",
+        "category": "kids",
+        "logo": "https://yt3.googleusercontent.com/qEZqD4AyGlMCHDKurKPtcSpUpH0O7fsmGesysGipg4FD6XD9ehZHhaBN9VzIC49wk2kQHdea4g=s900-c-k-c0x00ffffff-no-rj",
+        "type": "iframe",
+        "source": "https://ok.ru/videoembed/10367353495046"
+    },
+    {
+        "id": 55,
+        "name": "قناة المهرية",
+        "category": "entertainment",
+        "logo": "https://yt3.googleusercontent.com/AZXCQjFXLiHSlonFtCwNqcbs0pK4OKyiGBQhp_yPeXAPt6mX0f7MKybBWGez7iCMqlxAGSfp=s900-c-k-c0x00ffffff-no-rj",
+        "type": "m3u8",
+        "source": "https://starmenajo.com/hls/almahriah/index.m3u8"
+    },
+    {
+        "id": 14,
+        "name": "شباب البومب",
+        "category": "entertainment",
+        "logo": "https://i.ytimg.com/vi/ok3AFsfwVMc/hqdefault.jpg",
+        "type": "youtube",
+        "source": "https://youtu.be/kshasUUHrug"
+    },
+    {
+        "id": 15,
+        "name": "قناة حضرموت",
+        "category": "news",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVPeDj8RgW3IvzqUtF9n70oqIfF47JSgc6eg&s",
+        "type": "iframe",
+        "source": "https://player.twitch.tv/?channel=hadramout1&parent=hadhramaut.tv"
+    },
+    {
+        "id": 16,
+        "name": "ناشونال جيوغرافيك",
+        "category": "documentary",
+        "logo": "https://i.ibb.co/GQBX9t9j/unnamed.png",
+        "type": "m3u8",
+        "source": "https://streamer1.qna.org.qa/148133202_live/148133202_63.sdp/chunklist_w1946178961.m3u8"
+    },
+    {
+        "id": 17,
+        "name": "سكاي نيوز عربية",
+        "category": "news",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-27-31-365.jpg",
+        "type": "m3u8",
+        "source": "https://stream.skynewsarabia.com/ott/ott.m3u8"
+    },
+    {
+        "id": 18,
+        "name": "الجزيرة مباشر",
+        "category": "news",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984288293657266075852379588.jpg",
+        "type": "m3u8",
+        "source": "https://live-hls-web-ajm.getaj.net/AJM/index.m3u8"
+    },
+    {
+        "id": 19,
+        "name": "العربية الحدث",
+        "category": "news",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-25-15-601.jpg",
+        "type": "m3u8",
+        "source": "https://av.alarabiya.net/alarabiapublish/alhadath.smil/playlist.m3u8"
+    },
+    {
+        "id": 20,
+        "name": "RT عربية",
+        "category": "news",
+        "logo": "https://www.web24iptv.online/img/rt/russia-today-arabic.webp",
+        "type": "m3u8",
+        "source": "https://rt-arb.rttv.com/live/rtarab/playlist_4500Kb.m3u8"
+    },
+    {
+        "id": 21,
+        "name": "الميادين",
+        "category": "news",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-34-32-115.jpg",
+        "type": "m3u8",
+        "source": "https://mdnlv.cdn.octivid.com/almdn/smil:mpegts.stream.smil/playlist.m3u8"
+    },
+    {
+        "id": 22,
+        "name": "الشرق للاخبار",
+        "category": "news",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-31-35-110.jpg",
+        "type": "m3u8",
+        "source": "https://svs.itworkscdn.net/bloomberarlive/bloomberg.smil/playlist_dvr.m3u8"
+    },
+    {
+        "id": 23,
+        "name": "دبي الرياضية 3",
+        "category": "sport",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984281029901900757029355522.jpg",
+        "type": "m3u8",
+        "source": "https://dmitwlvvll.cdn.mgmlcdn.com/dubaisportshd5/smil:dubaisportshd5.smil/chunklist.m3u8"
+    },
+    {
+        "id": 24,
+        "name": "دبي راسنغ",
+        "category": "sport",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad9842811294758081103149484478.jpg",
+        "type": "m3u8",
+        "source": "https://dmisdracta.cdn.mgmlcdn.com/events/smil:events.stream.smil/chunklist.m3u8"
+    },
+    {
+        "id": 25,
+        "name": "دبي راسنغ 2",
+        "category": "sport",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad9842811294758081103149484478.jpg",
+        "type": "m3u8",
+        "source": "https://dmithrvllta.cdn.mgmlcdn.com/dubairacing/smil:dubairacing.smil/chunklist.m3u8"
+    },
+    {
+        "id": 26,
+        "name": "الشارقة الرياضية",
+        "category": "sport",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad9842812291006983732572860675.jpg",
+        "type": "m3u8",
+        "source": "https://svs.itworkscdn.net/smc4sportslive/smc4.smil/playlist.m3u8"
+    },
+    {
+        "id": 27,
+        "name": "MBC 3",
+        "category": "kids",
+        "logo": "https://yt3.googleusercontent.com/pFJzLofqt5PA02i2ccrXMyDqxrJwxYYgV0R2gzyCyxDaES9qjAvmS0kHdUxva8vEJsCq_hkCvw=s160-c-k-c0x00ffffff-no-rj",
+        "type": "iframe",
+        "source": "https://can2025.aflam4you.net/playeraf.php?vid=17&aflam_s=1&aflam_k=1144665654423324"
+    },
+    {
+        "id": 28,
+        "name": "أطفال ومواهب",
+        "category": "kids",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Atfal1.jpg",
+        "type": "m3u8",
+        "source": "https://5aafcc5de91f1.streamlock.net/atfal1.com/atfal2/playlist.m3u8"
+    },
+    {
+        "id": 29,
+        "name": "رؤيا كيدز",
+        "category": "kids",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984283291678699179921130472.jpg",
+        "type": "m3u8",
+        "source": "https://playlist.fasttvcdn.com/pl/ptllxjd03j6g9oxxjdfapg/roya-kids-originals/playlist.m3u8"
+    },
+    {
+        "id": 30,
+        "name": "ماشا والدب",
+        "category": "kids",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVXQwXnxTuoSX4GBy-VlEuYg5nDaRewMkPyw&s",
+        "type": "youtube",
+        "source": "https://youtu.be/Ho3Y3X1JZp8"
+    },
+    {
+        "id": 31,
+        "name": "السنة النبوية",
+        "category": "religious",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984284295763149471188527240.jpg",
+        "type": "m3u8",
+        "source": "https://cdn-globecast.akamaized.net/live/eds/saudi_sunnah/hls_roku/index.m3u8"
+    },
+    {
+        "id": 32,
+        "name": "إذاعة القرآن الكريم",
+        "category": "religious",
+        "logo": "https://i.ibb.co/gM3d9v05/fullhd-ef572438fffe8669b91c090d495bee55e7a4808c.png",
+        "type": "m3u8",
+        "source": "https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8"
+    },
+    {
+        "id": 33,
+        "name": "اقراء",
+        "category": "religious",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad98428529284562670066395869.jpg",
+        "type": "m3u8",
+        "source": "https://playlist.fasttvcdn.com/pl/dlkqw1ftuvuuzkcb4pxdcg/Iqraafasttv3/playlist.m3u8"
+    },
+    {
+        "id": 34,
+        "name": "اقراء قرآن",
+        "category": "religious",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad98428529284562670066395869.jpg",
+        "type": "m3u8",
+        "source": "https://playlist.fasttvcdn.com/pl/dlkqw1ftuvuuzkcb4pxdcg/Iqraafasttv2/playlist.m3u8"
+    },
+    {
+        "id": 35,
+        "name": "مكة",
+        "category": "religious",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984286296704368287364149598.jpg",
+        "type": "m3u8",
+        "source": "https://media2.streambrothers.com:1936/8122/8122/playlist.m3u8"
+    },
+    {
+        "id": 36,
+        "name": "نور دبي",
+        "category": "religious",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984287294559215033069411420.jpg",
+        "type": "m3u8",
+        "source": "https://dmiffthftl.cdn.mangomolo.com/noordubaitv/smil:noordubaitv.smil/chunklist.m3u8"
+    },
+    {
+        "id": 37,
+        "name": "الكويت اثراء",
+        "category": "religious",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984287291560428172345528644.jpg",
+        "type": "m3u8",
+        "source": "https://kwtethta.cdn.mangomolo.com/eth/smil:eth.stream.smil/chunklist.m3u8"
+    },
+    {
+        "id": 38,
+        "name": "MBC 5",
+        "category": "MBC",
+        "logo": "https://yt3.googleusercontent.com/TYmRZqLTbgm6c8P0_RaxZgbyypEdYglExecex_mP5Brpj_pmuPb4202AqH_4z34_0ERL_mgX=s900-c-k-c0x00ffffff-no-rj",
+        "type": "iframe",
+        "source": "https://www.web24iptv.online/pl/m3?ch=mbc5"
+    },
+    {
+        "id": 39,
+        "name": "MBC 4",
+        "category": "MBC",
+        "logo": "https://iconape.com/wp-content/files/zd/20400/png/mbc-4-copy-01.png",
+        "type": "iframe",
+        "source": "https://www.web24iptv.online/pl/m3?ch=mbc4"
+    },
+    {
+        "id": 40,
+        "name": "MBC 2",
+        "category": "MBC",
+        "logo": "https://iconape.com/wp-content/files/ur/20647/png/mbc2-01.png",
+        "type": "iframe",
+        "source": "https://www.web24iptv.online/pl/m?ch=mbc2_1"
+    },
+    {
+        "id": 41,
+        "name": "MBC MAX",
+        "category": "MBC",
+        "logo": "https://logodix.com/logo/836790.png",
+        "type": "iframe",
+        "source": "https://www.web24iptv.online/pl/m?ch=mbcmax_2"
+    },
+    {
+        "id": 42,
+        "name": "رؤيا",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984282296240009843345610680.jpg",
+        "type": "m3u8",
+        "source": "https://royatv-live.daioncdn.net/royatv/royatv.m3u8"
+    },
+    {
+        "id": 43,
+        "name": "رؤيا كوميدي",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984281297063586588031513654.jpg",
+        "type": "m3u8",
+        "source": "https://playlist.fasttvcdn.com/pl/toa2uuhhygheuly7xtuqrg/roya-comedy/playlist.m3u8"
+    },
+    {
+        "id": 44,
+        "name": "رؤيا دراما",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984281297063586588031513654.jpg",
+        "type": "m3u8",
+        "source": "https://playlist.fasttvcdn.com/pl/a2le4pbpa6rpzv147haf4w/drama/playlist.m3u8"
+    },
+    {
+        "id": 45,
+        "name": "رؤيا كيتشن",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984281297063586588031513654.jpg",
+        "type": "m3u8",
+        "source": "https://playlist.fasttvcdn.com/pl/toa2uuhhygheuly7xtuqrg/roya-kitchen/playlist.m3u8"
+    },
+    {
+        "id": 46,
+        "name": "المستقبل",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/images281294480125629386148665.jpg",
+        "type": "m3u8",
+        "source": "https://live.kwikmotion.com/futurelive/ftv.smil/playlist.m3u8"
+    },
+    {
+        "id": 47,
+        "name": "mtv",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984284296982084874550376107.jpg",
+        "type": "m3u8",
+        "source": "https://hms.pfs.gdn/v1/broadcast/mtv/playlist.m3u8"
+    },
+    {
+        "id": 48,
+        "name": "one tv",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984285296938689554179198073.jpg",
+        "type": "m3u8",
+        "source": "https://hms.pfs.gdn/v1/broadcast/one/playlist.m3u8"
+    },
+    {
+        "id": 49,
+        "name": "TL لبنان",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984283293585477158857075091.jpg",
+        "type": "m3u8",
+        "source": "https://cdn.catiacast.video/abr/ed8f807e2548db4507d2a6f4ba0c4a06/playlist.m3u8"
+    },
+    {
+        "id": 50,
+        "name": "MBC Drama+",
+        "category": "MBC",
+        "logo": "https://media0087.elcinema.com/tvguide/1131_1.png",
+        "type": "iframe",
+        "source": "https://www.web24iptv.online/pl/m3?ch=mbcsd"
+    },
+    {
+        "id": 51,
+        "name": "تلفزيون سوريا",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/defimage3969569012490519141.png",
+        "type": "m3u8",
+        "source": "https://svs.itworkscdn.net/syriatvlive/syriatv.smil/playlist_dvr.m3u8"
+    },
+    {
+        "id": 52,
+        "name": "MBC Drama",
+        "category": "MBC",
+        "logo": "https://yt3.googleusercontent.com/Ek6Oqg1_PHR-B9OaAc6GXIOOVH0rnNCXoObq-uvxzLN2BEUZVCwkFauVfdxthbpOxCWf0DoWgA=s900-c-k-c0x00ffffff-no-rj",
+        "type": "iframe",
+        "source": "https://www.web24iptv.online/pl/m4?ch=mbcd"
+    },
+    {
+        "id": 53,
+        "name": "سوريا الثانية",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/images2395502146540845444.jpeg",
+        "type": "m3u8",
+        "source": "https://live.kwikmotion.com/syriatv02live/syriatv02.smil/playlist.m3u8"
+    },
+    {
+        "id": 54,
+        "name": "LTV SYRIA",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984281293318575537335798155.jpg",
+        "type": "m3u8",
+        "source": "https://p-ltv.akamaized.net/ltv/ltv.m3u8"
+    },
+    {
+        "id": 55,
+        "name": "العربية الاقتصادية",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984282298921269910408956068.jpg",
+        "type": "m3u8",
+        "source": "https://live.alarabiya.net/alarabiapublish/aswaaq.smil/playlist.m3u8"
+    },
+    {
+        "id": 56,
+        "name": "العربية برامج",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad98457053676586798219.jpg",
+        "type": "m3u8",
+        "source": "https://d1j4r34gq3qw9y.cloudfront.net/out/v1/96804f3a14864641a21c25e8ca9afb74/index.m3u8"
+    },
+    {
+        "id": 57,
+        "name": "المشهد",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad9843112237656482295601.jpg",
+        "type": "m3u8",
+        "source": "https://bcovlive-a.akamaihd.net/20c3ca22be3c4f03b30afbf3c92cfd14/ap-south-1/6313884884001/playlist.m3u8"
+    },
+    {
+        "id": 58,
+        "name": "اليوم",
+        "category": "entertainment",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984289295645141147891945658.jpg",
+        "type": "m3u8",
+        "source": "https://iko-live.akamaized.net/AlyuamTV/master.m3u8"
+    },
+    {
+        "id": 59,
+        "name": "الجزيرة الوثائقية",
+        "category": "documentary",
+        "logo": "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984288297402425690659400800.jpg",
+        "type": "m3u8",
+        "source": "https://live-hls-web-ajd.getaj.net/AJD/index.m3u8"
+    },
+    {
+        "id": 60,
+        "name": "القرآن الكريم كاملاً",
+        "category": "religious",
+        "logo": "https://i.ytimg.com/vi/_uVYDpin8fs/maxresdefault.jpg",
+        "type": "youtube",
+        "source": "https://youtu.be/_uVYDpin8fs"
+    },
+    {
+        "id": 61,
+        "name": "سورة البقرة كاملة",
+        "category": "religious",
+        "logo": "https://i.ytimg.com/vi/P0uaLRO6V1U/maxresdefault.jpg",
+        "type": "youtube",
+        "source": "https://youtu.be/P0uaLRO6V1U"
+    },
+    {
+        "id": 62,
+        "name": "سيجعل الله بعد عسرٍ يسرًا",
+        "category": "religious",
+        "logo": "https://i.ibb.co/mCChsWb8/2025-10-19-232235.jpg",
+        "type": "youtube",
+        "source": "https://youtu.be/JL5336tFBfk"
+    },
+    {
+        "id": 63,
+        "name": "بودكاست نضج",
+        "category": "religious",
+        "logo": "https://i.ytimg.com/vi/POmFXsJB0f0/mqdefault.jpg",
+        "type": "youtube",
+        "source": "https://youtu.be/POmFXsJB0f0"
+    },
+    {
+        "id": 64,
+        "name": "نساء ذكرهن النبي ﷺ",
+        "category": "religious",
+        "logo": "https://i.ytimg.com/vi/rCuJH6KhxfM/sddefault.jpg",
+        "type": "youtube",
+        "source": "https://youtu.be/rCuJH6KhxfM"
+    },
+    {
+        "id": 65,
+        "name": "بصمة سلفي",
+        "category": "religious",
+        "logo": "https://pbs.twimg.com/media/G2Hg2wfXwAEu5ol.jpg:large",
+        "type": "youtube",
+        "source": "https://youtu.be/T0d2pMV0J-s"
+    }
+]
