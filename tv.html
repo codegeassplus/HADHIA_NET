@@ -1,1410 +1,448 @@
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<title>القنوات المباشرة</title>
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
-<style>
-     :root {
-        --primary: #4361ee;
-        --secondary: #3a0ca3;
-        --accent: #7209b7;
-        --dark: #1e1e2e;
-        --light: #f8f9fa;
-        --success: #4cc9f0;
-        --danger: #f72585;
-        --text: #2b2d42;
-        --text-light: #f8f9fa;
-        --card-bg: #ffffff;
-        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        --radius: 16px;
-    }
-    
-    .dark-mode {
-        --primary: #4361ee;
-        --secondary: #3a0ca3;
-        --accent: #7209b7;
-        --dark: #121212;
-        --light: #1e1e2e;
-        --text: #f8f9fa;
-        --text-light: #f8f9fa;
-        --card-bg: #2d2d3a;
-        --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-    
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قنوات مباشرة</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <style>
     body {
-        font-family: 'Tajawal', sans-serif;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: var(--text);
-        min-height: 100vh;
-        padding-bottom: 70px;
-        transition: all 0.3s ease;
+      margin: 0;
+      background-color: #0a0f1b;
+      color: white;
+      font-family: 'Tajawal', sans-serif;
+      transition: background-color 0.3s, color 0.3s;
     }
-    
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 15px;
+    body.light-mode {
+      background-color: #f0f0f0;
+      color: #111;
     }
-    /* Header Styles */
-    
     header {
-        background: var(--dark);
-        color: var(--text-light);
-        padding: 15px 0;
-        box-shadow: var(--shadow);
-        position: sticky;
-        top: 0;
-        z-index: 100;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    
-    .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
     .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+      font-weight: bold;
+      font-size: 1.2rem;
     }
-    
-    .logo i {
-        font-size: 24px;
-        color: var(--success);
+    .moon {
+      cursor: pointer;
+      font-size: 1.5rem;
     }
-    
-    .logo h1 {
-        font-size: 20px;
-        font-weight: 700;
+    .player {
+      background: #1c2230;
+      margin: 1rem;
+      padding: 1rem;
+      border-radius: 15px;
+      position: relative;
+      text-align: center;
     }
-    
-    .theme-toggle {
-        background: none;
-        border: none;
-        color: var(--text-light);
-        font-size: 20px;
-        cursor: pointer;
-        padding: 5px;
-        border-radius: 50%;
-        transition: all 0.3s;
+    body.light-mode .player {
+      background: #fff;
     }
-    
-    .theme-toggle:hover {
-        background: rgba(255, 255, 255, 0.1);
+    .player .live {
+      background: rgba(255, 0, 0, 0.7);
+      color: white;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 10px;
+      position: absolute;
+      top: var(--live-top, 10px);
+      right: var(--live-right, 10px);
+      left: var(--live-left, auto);
+      bottom: var(--live-bottom, auto);
+      animation: blink 1s infinite;
     }
-    /* Player Styles */
-    
-    .player-section {
-        margin: 20px 0;
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
     }
-    
-    .player-container {
-        background: var(--card-bg);
-        border-radius: var(--radius);
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        position: relative;
+    video {
+      width: 100%;
+      max-height: 220px;
+      border-radius: 10px;
+      background: black;
     }
-    
-    .player-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px;
-        background: var(--secondary);
-        color: var(--text-light);
+    .fullscreen-btn {
+      margin-top: 0.5rem;
+      background: #0d6efd;
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
     }
-    
-    .channel-name {
-        font-weight: 700;
-        font-size: 18px;
-    }
-    
-    .live-badge {
-        background: var(--danger);
-        color: white;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-        0% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0.7;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-    
-    .video-container {
-        position: relative;
-        width: 100%;
-        height: 0;
-        padding-bottom: 56.25%;
-    }
-    
-    #video-player {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #000;
-    }
-    
-    .player-controls {
-        display: flex;
-        justify-content: space-between;
-        padding: 15px;
-        background: var(--card-bg);
-    }
-    
-    .control-btn {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 30px;
-        font-family: 'Tajawal', sans-serif;
-        font-weight: 700;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: all 0.3s;
-    }
-    
-    .control-btn:hover {
-        background: var(--accent);
-        transform: translateY(-2px);
-    }
-    /* Search & Categories */
-    
-    .search-section {
-        margin: 20px 0;
-    }
-    
-    .search-container {
-        position: relative;
-        margin-bottom: 15px;
-    }
-    
-    .search-input {
-        width: 100%;
-        padding: 15px 50px 15px 15px;
-        border: none;
-        border-radius: 30px;
-        background: var(--card-bg);
-        color: var(--text);
-        font-family: 'Tajawal', sans-serif;
-        font-size: 16px;
-        box-shadow: var(--shadow);
-    }
-    
-    .search-icon {
-        position: absolute;
-        right: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--primary);
-    }
-    
     .categories {
-        display: flex;
-        gap: 10px;
-        overflow-x: auto;
-        padding: 5px 0 15px;
-        scrollbar-width: none;
+      margin: 1rem;
     }
-    
-    .categories::-webkit-scrollbar {
-        display: none;
+    .categories button {
+      background: #1c2230;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0.2rem;
+      border-radius: 10px;
+      cursor: pointer;
     }
-    
-    .category-btn {
-        background: var(--card-bg);
-        color: var(--text);
-        border: none;
-        padding: 10px 20px;
-        border-radius: 30px;
-        font-family: 'Tajawal', sans-serif;
-        font-weight: 700;
-        white-space: nowrap;
-        cursor: pointer;
-        transition: all 0.3s;
-        box-shadow: var(--shadow);
+    body.light-mode .categories button {
+      background: #ddd;
+      color: #111;
     }
-    
-    .category-btn.active {
-        background: var(--primary);
-        color: white;
+    .channels {
+      margin: 2rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
-    /* Channels Grid */
-    
-    .channels-section {
-        margin: 20px 0;
+    .channel {
+      background: #1c2230;
+      padding: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
     }
-    
-    .section-title {
-        font-size: 22px;
-        font-weight: 700;
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
+    .channel img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
     }
-    
-    .channels-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 15px;
+    body.light-mode .channel {
+      background: #fff;
+      color: #111;
     }
-    
-    .channel-card {
-        background: var(--card-bg);
-        border-radius: var(--radius);
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: all 0.3s;
-        cursor: pointer;
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #1c2230;
+      display: flex;
+      justify-content: space-around;
+      padding: 0.5rem 0;
     }
-    
-    .channel-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    body.light-mode .navbar {
+      background: #ddd;
+      color: #111;
     }
-    
-    .channel-logo {
-        width: 100%;
-        height: 100px;
-        object-fit: cover;
-        border-bottom: 2px solid var(--primary);
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+      text-align: center;
     }
-    
-    .channel-info {
-        padding: 12px;
+    body.light-mode .navbar a {
+      color: #111;
     }
-    
-    .channel-name {
-        font-weight: 700;
-        font-size: 14px;
-        margin-bottom: 5px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    .channel-category {
-        font-size: 12px;
-        color: var(--primary);
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-    
-    .favorite-btn {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        background: rgba(0, 0, 0, 0.6);
-        color: white;
-        border: none;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-    
-    .favorite-btn.active {
-        background: var(--danger);
-        color: white;
-    }
-    /* Bottom Navigation */
-    
-    .bottom-nav {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: var(--dark);
-        display: flex;
-        justify-content: space-around;
-        padding: 12px 0;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-    }
-    
-    .nav-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: var(--text-light);
-        text-decoration: none;
-        font-size: 12px;
-        transition: all 0.3s;
-    }
-    
-    .nav-item i {
-        font-size: 20px;
-        margin-bottom: 5px;
-    }
-    
-    .nav-item.active {
-        color: var(--success);
-    }
-    /* Toast Notification */
-    
-    .toast {
-        position: fixed;
-        bottom: 80px;
-        right: 20px;
-        background: var(--success);
-        color: white;
-        padding: 12px 20px;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        z-index: 1000;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.3s;
-    }
-    
-    .toast.show {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    /* Loading Spinner */
-    
-    .loading {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        border: 3px solid rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        border-top-color: var(--primary);
-        animation: spin 1s ease-in-out infinite;
-    }
-    
-    @keyframes spin {
-        to {
-            transform: rotate(360deg);
-        }
-    }
-    /* Responsive Adjustments */
-    
-    @media (max-width: 768px) {
-        .channels-grid {
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        }
-        .logo h1 {
-            font-size: 18px;
-        }
-        .section-title {
-            font-size: 20px;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .channels-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        .categories {
-            padding-bottom: 10px;
-        }
-        .category-btn {
-            padding: 8px 16px;
-            font-size: 14px;
-        }
-    }
-    /* Network Banner Styles */
-    
-    .network-banner {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 10px 0;
-        margin-top: -15px;
-        justify-content: center;
-    }
-    
-    .network-info {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .network-name {
-        font-weight: 700;
-        font-size: 16px;
-        color: var(--text-light);
-    }
-    
-    .network-slogan {
-        font-size: 12px;
-        color: var(--success);
-        opacity: 0.9;
-    }
-    
-    .network-logo img {
-        width: 100%;
-        height: 75px;
-    }
-    
-    @media (max-width: 768px) {
-        .network-logo img {
-            width: 100%;
-            height: 92px;
-        }
-        .network-banner {
-            padding: 8px 0;
-            margin-top: 8px;
-        }
-        .network-name {
-            font-size: 23px;
-        }
-        .network-slogan {
-            font-size: 15px;
-        }
-        .network-logo img {
-            width: 100%;
-            height: 75px;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .header-content {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .network-banner {
-            justify-content: center;
-            margin-top: -17px;
-        }
-        .logo {
-            margin-bottom: 10px;
-        }
-    }
-    /* زر إنهاء الجلسة */
-    
-    .session-btn {
-        background: var(--danger);
-        color: white;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 20px;
-        cursor: pointer;
-        font-family: 'Tajawal', sans-serif;
-        font-size: 14px;
-        margin-left: 10px;
-        transition: all 0.3s;
-    }
-    
-    .session-btn:hover {
-        background: #e01a5d;
-        transform: translateY(-2px);
-    }
-</style>
+  </style>
+</head>
+<body>
 
+<section class="player">
+  <div class="live" style="--live-top: 20px; --live-right: 20px;">مباشر</div>
+  <video id="video" controls autoplay></video>
+</section>
 
+<section class="categories">
+  <button onclick="filterChannels('all')">جميع القنوات</button>
+  <button onclick="filterChannels('news')">قنوات إخبارية</button>
+  <button onclick="filterChannels('sport')">قنوات رياضية</button>
+  <button onclick="filterChannels('kids')">قنوات اطفال</button>
+  <button onclick="filterChannels('monoat')">قنوات منوعات</button>
+  <button onclick="filterChannels('islam')">قنوات اسلامية</button>
+</section>
 
-<main class="container">
-    <!-- Player Section -->
-    <section class="player-section">
-        <div class="player-container">
-            <div class="player-header">
-                <div class="channel-name" id="current-channel">الجزيرة الإخبارية</div>
-                <div class="live-badge">
-                    <i class="fas fa-circle"></i>
-                    <span>مباشر</span>
-                </div>
-            </div>
-            <div class="video-container">
-                <div id="video-player">
-                    <!-- سيتم تحميل الفيديو هنا ديناميكياً -->
-                </div>
-            </div>
-         <div class="player-controls">
-           <button class="control-btn" id="favoriteChannelBtn">
-           <i class="far fa-star"></i>
-           <span>إضافة للمفضلة</span>
-         </button>
+<section class="channels" id="channels">
+  <div class="channel" data-category="news" data-src="https://live-hls-apps-aja-v3-fa.getaj.net/AJA/index.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2024/11/picsart_24-11-23_02-59-21-7254502805147498804649.png" alt="الجزيرة">
+    الجزيرة الاخبارية
+  </div>
+  <div class="channel" data-category="news" data-src="https://live-hls-web-ajm.getaj.net/AJM/index.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984288293657266075852379588.jpg" alt="4">
+الجزيرة مباشر
+  </div>
+  <div class="channel" data-category="news" data-src="https://live.alarabiya.net/alarabiapublish/alarabiya.smil/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_16-00-52-761.jpg" alt="العربية">
+العربية الاخبارية
+  </div>
+  <div class="channel" data-category="news" data-src="https://shls-hadath-prod-dub.shahid.net/out/v1/0e1a306399c346faac4226aa0858f99b/index.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-25-15-601.jpg" alt="الحدث">
+العربية الحدث
+  </div>
+  <div class="channel" data-category="news" data-src="https://stream.skynewsarabia.com/ott/ott.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-27-31-365.jpg" alt="سكاي عربية">
+سكاي نيوز عربية
+  </div>
+  <div class="channel" data-category="news" data-src="https://svs.itworkscdn.net/bloomberarlive/bloomberg.smil/playlist_dvr.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-31-35-110.jpg" alt="الشرق">
+الشرق للاخبار
+  </div>
+  <div class="channel" data-category="news" data-src="https://live.france24.com/hls/live/2037222/F24_AR_HI_HLS/master_5000.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-45-10-629.jpg" alt="فرنسا">
+فرنسا 24
+  </div>
+  <div class="channel" data-category="news" data-src="https://vs-hls-pushb-ww.live.cf.md.bbci.co.uk/x=4/i=urn:bbc:pips:service:bbc_arabic_tv/pc_hd_abr_v2.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-43-34-409.jpg" alt="بي بي سي عربية">
+بي بي سي عربية
+  </div>
+  <div class="channel" data-category="news" data-src="https://mdnlv.cdn.octivid.com/almdn/smil:mpegts.stream.smil/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-34-32-115.jpg" alt="الميادين">
+الميادين
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://svs.itworkscdn.net/syriatvlive/syriatv.smil/playlist_dvr.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/defimage3969569012490519141.png" alt="سوريا">
+تلفزيون سوريا
+</div>
+  <div class="channel" data-category="monoat" data-src="https://live.kwikmotion.com/syriatv02live/syriatv02.smil/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/images2395502146540845444.jpeg" alt="الثانية">
+سوريا الثانية
+</div>
+  <div class="channel" data-category="monoat" data-src="https://p-ltv.akamaized.net/ltv/ltv.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984281293318575537335798155.jpg" alt="LTV">
+LTV SYRIA
+</div>
+  <div class="channel" data-category="news" data-src="https://live.alarabiya.net/alarabiapublish/aswaaq.smil/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984282298921269910408956068.jpg" alt="العربية الاقتصادية">
+العربية الاقتصادية
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://d1j4r34gq3qw9y.cloudfront.net/out/v1/96804f3a14864641a21c25e8ca9afb74/index.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad98457053676586798219.jpg" alt="العربية برامج">
+العربية برامج
+</div>
+  <div class="channel" data-category="news" data-src="https://bcovlive-a.akamaihd.net/20c3ca22be3c4f03b30afbf3c92cfd14/ap-south-1/6313884884001/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad9843112237656482295601.jpg" alt="المشهد">
+المشهد
+</div>
+<div class="channel" data-category="news" data-src="https://iko-live.akamaized.net/AlyuamTV/master.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984289295645141147891945658.jpg" alt="4">
+اليوم
+  </div>
+  <div class="channel" data-category="kids" data-src="https://mbc-3-usa-ak.akamaized.net/out/v1/8bbfec9446d84c9ea0dfa34edede6db9/index.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2023/03/picsart_23-03-03_13-01-45-799.jpg" alt="mbc 3">
+MBC 3
+  </div>
+  <div class="channel" data-category="kids" data-src="https://streams.spacetoon.com/live/stchannel/smil:livesmil.smil/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2023/03/picsart_23-03-03_13-07-34-468.jpg" alt="سبيستون">
+سبيستون
+  </div>
+  <div class="channel" data-category="kids" data-src="https://playlist.fasttvcdn.com/pl/ptllxjd03j6g9oxxjdfapg/roya-kids-originals/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984283291678699179921130472.jpg" alt="رؤيا كيدز">
+رؤيا كيدز
+  </div>
+  <div class="channel" data-category="kids" data-src="https://moonbug-rokuus.amagi.tv/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/picsart_25-04-30_20-55-11-7637293465476293926950.png" alt="moonbug">
+moonbug
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://playlist.fasttvcdn.com/pl/toa2uuhhygheuly7xtuqrg/roya-comedy/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984281297063586588031513654.jpg" alt="رؤيا كوميدي">
+رؤيا كوميدي
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://playlist.fasttvcdn.com/pl/a2le4pbpa6rpzv147haf4w/drama/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984281297063586588031513654.jpg" alt="دراما">
+رؤيا دراما
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://playlist.fasttvcdn.com/pl/toa2uuhhygheuly7xtuqrg/roya-kitchen/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984281297063586588031513654.jpg" alt="كيتشن">
+رؤيا كيتشن
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://royatv-live.daioncdn.net/royatv/royatv.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984282296240009843345610680.jpg" alt="رؤيا">
+رؤيا
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://live.kwikmotion.com/futurelive/ftv.smil/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/images281294480125629386148665.jpg" alt="المستقبل">
+المستقبل
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://hms.pfs.gdn/v1/broadcast/mtv/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984284296982084874550376107.jpg" alt="mtv">
+mtv
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://hms.pfs.gdn/v1/broadcast/one/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984285296938689554179198073.jpg" alt="one">
+one tv
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://cdn.catiacast.video/abr/ed8f807e2548db4507d2a6f4ba0c4a06/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984283293585477158857075091.jpg" alt="تل">
+TL لبنان
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://weyyak-live.akamaized.net/weyyak_zee_alwan/index.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2023/03/d8aad986d8b2d98ad984282329.jpeg" alt="الوان">
+زي الوان
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://weyyak-live.akamaized.net/weyyak_zee_aflam/index.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2023/03/d8aad986d8b2d98ad984281929.png" alt="زي افلام">
+زي افلام
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://d3o3cim6uzorb4.cloudfront.net/out/v1/0965e4d7deae49179172426cbfb3bc5e/index.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2023/03/d8aad986d8b2d98ad984282029.png" alt="mbc">
+MBC 1
+  </div>
+  <div class="channel" data-category="monoat" data-src="https://shls-masr-prod-dub.shahid.net/out/v1/c08681f81775496ab4afa2bac7ae7638/index.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2023/06/picsart_23-06-16_20-55-14-716.png" alt="4">
+MBC 4
+  </div>
+  <div class="channel" data-category="islam" data-src="https://al-ekhbaria-prod-dub.shahid.net/out/v1/9885cab0a3ec4008b53bae57a27ca76b/index.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984286297893229794263470870.jpg" alt="القران">
+القران الكريم
+  </div>
+  <div class="channel" data-category="islam" data-src="https://cdn-globecast.akamaized.net/live/eds/saudi_sunnah/hls_roku/index.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984284295763149471188527240.jpg" alt="السنة">
+السنة النبوية
+  </div>
+  <div class="channel" data-category="islam" data-src="https://playlist.fasttvcdn.com/pl/dlkqw1ftuvuuzkcb4pxdcg/Iqraafasttv3/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad98428529284562670066395869.jpg" alt="اقرا">
+اقراء
+  </div>
+  <div class="channel" data-category="islam" data-src="https://playlist.fasttvcdn.com/pl/dlkqw1ftuvuuzkcb4pxdcg/Iqraafasttv2/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad98428529284562670066395869.jpg" alt="4">
+اقراء قران
+  </div>
+  <div class="channel" data-category="islam" data-src="https://media2.streambrothers.com:1936/8122/8122/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984286296704368287364149598.jpg" alt="مكة">
+مكة
+  </div>
+  <div class="channel" data-category="islam" data-src="https://dmiffthftl.cdn.mangomolo.com/noordubaitv/smil:noordubaitv.smil/chunklist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984287294559215033069411420.jpg" alt="4">
+نور دبي
+  </div>
+  <div class="channel" data-category="islam" data-src="https://kwtethta.cdn.mangomolo.com/eth/smil:eth.stream.smil/chunklist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984287291560428172345528644.jpg" alt="4">
+الكويت اثراء
+  </div>
+<div class="channel" data-category="monoat" data-src="https://live-hls-web-ajd.getaj.net/AJD/index.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984288297402425690659400800.jpg" alt="4">
+الجزيرة الوثائقية
+  </div>
+  <div class="channel" data-category="sport" data-src="https://dmitwlvvll.cdn.mgmlcdn.com/dubaisportshd/smil:dubaisportshd.smil/chunklist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984281029901900757029355522.jpg" alt="4">
+دبي الرياضية 2
+  </div>
+  <div class="channel" data-category="sport" data-src="https://dmitwlvvll.cdn.mgmlcdn.com/dubaisportshd5/smil:dubaisportshd5.smil/chunklist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984281029901900757029355522.jpg" alt="4">
+دبي الرياضية 3
+  </div>
+  <div class="channel" data-category="sport" data-src="https://dmisdracta.cdn.mgmlcdn.com/events/smil:events.stream.smil/chunklist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad9842811294758081103149484478.jpg" alt="4">
+دبي راسنغ
+  </div>
+  <div class="channel" data-category="sport" data-src="https://dmithrvllta.cdn.mgmlcdn.com/dubairacing/smil:dubairacing.smil/chunklist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad9842811294758081103149484478.jpg" alt="4">
+دبي راسنغ 2
+  </div>
+  <div class="channel" data-category="sport" data-src="https://dmithrvllta.cdn.mgmlcdn.com/dubaimubasher/smil:dubaimubasher.smil/chunklist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad9842811294758081103149484478.jpg" alt="4">
+دبي راسنغ 3
+  </div>
+  <div class="channel" data-category="sport" data-src="https://svs.itworkscdn.net/smc4sportslive/smc4.smil/playlist.m3u8">
+    <img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad9842812291006983732572860675.jpg" alt="4">
+الشارقة الرياضية
+  </div>
+</section>
 
-           <button class="control-btn" id="openExternalBtn">
-           <i class="fas fa-external-link-alt"></i>
-           <span>اذا لم تعمل القناة</span>
-           </button>
-        </div>
+<img src="https://rashednet1.wordpress.com/wp-content/uploads/2025/05/picsart_25-05-02_02-12-35-1041748636504217509775.png" style="width:100%"></a>
 
-        </div>
-    </section>
+<!-- wp:spacer -->
+<div style="height:45px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
-    <!-- Search & Categories -->
-    <section class="search-section">
-        <div class="search-container">
-            <input type="text" class="search-input" id="searchInput" placeholder="ابحث عن قناة...">
-            <i class="fas fa-search search-icon"></i>
-        </div>
-        <div class="categories">
-            <button class="category-btn active" data-category="all">الكل</button>
-            <button class="category-btn" data-category="news">إخبارية</button>
-            <button class="category-btn" data-category="sport">رياضية</button>
-            <button class="category-btn" data-category="entertainment">ترفيهية</button>
-            <button class="category-btn" data-category="kids">أطفال</button>
-            <button class="category-btn" data-category="religious">دينية</button>
-            <button class="category-btn" data-category="documentary">وثائقية</button>
-            <button class="category-btn" data-category="MBC">MBC</button>
-        </div>
-    </section>
-
-    <!-- Channels Grid -->
-    <section class="channels-section">
-        <h2 class="section-title">
-            <i class="fas fa-broadcast-tower"></i>
-            <span>القنوات المتاحة</span>
-        </h2>
-        <div class="channels-grid" id="channelsGrid">
-            <!-- سيتم تحميل القنوات ديناميكياً -->
-        </div>
-    </section>
-</main>
-
-<!-- Toast Notification -->
-<div class="toast" id="toast">جاري تشغيل: الجزيرة الإخبارية</div>
-
-
+<nav class="navbar">
+  <a href="status.html">معلومات الحساب 📊</a>
+  <a href="contact.html">للتواصل ✉️</a>
+  <a href="logout.html">تسجيل الخروج 🚷</a>
+</nav>
 
 <script>
-    // بيانات القنوات
-    const channelsData = [{
-            id: 1,
-            name: "الجزيرة الإخبارية",
-            category: "news",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2024/11/picsart_24-11-23_02-59-21-7254502805147498804649.png",
-            type: "m3u8",
-            source: "https://live-hls-apps-aja-v3-fa.getaj.net/AJA/index.m3u8"
-        }, {
-            id: 42,
-            name: "عدن المستقلة",
-            category: "news",
-            logo: "https://yt3.googleusercontent.com/fqpEmDB_C23nUBKg_QMLuDFpDbCfZ8kZWfgEVS2NDbxijrleqUjxWtO1quXNbzORhP-WposWqf8=s900-c-k-c0x00ffffff-no-rj",
-            type: "iframe",
-            source: "https://player.restream.io/?token=e711e1267bec4b918cdc79138b225105"
-        }, {
-            id: 2,
-            name: "العربية الإخبارية",
-            category: "news",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_16-00-52-761.jpg",
-            type: "m3u8",
-            source: "https://live.alarabiya.net/alarabiapublish/alarabiya.smil/playlist.m3u8"
-        }, {
-            id: 52,
-            name: "يمن شباب",
-            category: "news",
-            logo: "https://mir-s3-cdn-cf.behance.net/projects/404/6a953024564441.55088673a269e.jpg",
-            type: "m3u8",
-            source: "https://starmenajo.com/hls/yemenshabab/index.m3u8"
-        }, {
-            id: 56,
-            name: "الأخبارية",
-            category: "news",
-            logo: "https://yt3.googleusercontent.com/aIdFsqZwUoaPjq6W40JgJrl6K_Q1TEcrRrdV_W5TJvYRhRncopBvGf1NgZ0r7lgz-d3aTwpLp68=s900-c-k-c0x00ffffff-no-rj",
-            type: "m3u8",
-            source: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-al-ekhbaria/297b3ef1cd0633ad9cfba7473a686a06/index.m3u8"
-        }, {
-            id: 3,
-            name: "بي بي سي عربية",
-            category: "news",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-43-34-409.jpg",
-            type: "m3u8",
-            source: "https://vs-hls-pushb-ww.live.cf.md.bbci.co.uk/x=4/i=urn:bbc:pips:service:bbc_arabic_tv/pc_hd_abr_v2.m3u8"
-        }, {
-            id: 4,
-            name: "فرنسا 24",
-            category: "news",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-45-10-629.jpg",
-            type: "m3u8",
-            source: "https://live.france24.com/hls/live/2037222/F24_AR_HI_HLS/master_5000.m3u8"
-        }, {
-            id: 5,
-            name: "MBC 1",
-            category: "MBC",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2023/03/d8aad986d8b2d98ad984282029.png",
-            type: "m3u8",
-            source: "https://shls-live-ak.akamaized.net/out/v1/0965e4d7deae49179172426cbfb3bc5e/index_7.m3u8"
-        }, {
-            id: 53,
-            name: "ماجد",
-            category: "kids",
-            logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA4gpfFMq51-iK__ihrNzUg-jdhhh7hA7S2w&s",
-            type: "m3u8",
-            source: "https://admn-live-cdn-lb.starzplayarabia.com/out/v1/admn_tv_enc/majid/majid_hls_nd/index.m3u8"
-        }, {
-            id: 54,
-            name: "Mbc Action",
-            category: "MBC",
-            logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsZvWG4aCZhnlZoYp8dLVg9ZWDUQTuKHfCkw&s",
-            type: "iframe",
-            source: "https://www.web24iptv.online/pl/m?ch=mbca_2"
-        }, {
-            id: 6,
-            name: "قناة الاعتصام المحلية",
-            category: "religious",
-            logo: "https://yt3.googleusercontent.com/P6wZ5RbYXAgdEmlo6V6iwdsn1Y9JoHP5qUVvYSRpP8qCToYC061y_j4mRJeVOnm58vcEgRABANI=s160-c-k-c0x00ffffff-no-rj",
-            type: "m3u8",
-            source: "https://live20.bozztv.com/giatv/giatv-aletisamtv/aletisamtv/chunks.m3u8"
-        }, {
-            id: 7,
-            name: "سبيستون",
-            category: "kids",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2023/03/picsart_23-03-03_13-07-34-468.jpg",
-            type: "iframe",
-            source: "https://can2025.aflam4you.net/playeraf.php?vid=3066&aflam_s=1&aflam_k=1144665654423324"
-        }, {
-            id: 8,
-            name: "القرآن الكريم",
-            category: "religious",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984286297893229794263470870.jpg",
-            type: "m3u8",
-            source: "https://cdn-globecast.akamaized.net/live/eds/saudi_quran/hls_roku/index.m3u8"
-        }, {
-            id: 9,
-            name: "دبي الرياضية",
-            category: "sport",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984281029901900757029355522.jpg",
-            type: "m3u8",
-            source: "https://dmitwlvvll.cdn.mgmlcdn.com/dubaisportshd/smil:dubaisportshd.smil/chunklist.m3u8"
-        }, {
-            id: 9,
-            name: "عمان الرياضية",
-            category: "sport",
-            logo: "https://yt3.googleusercontent.com/KGgosFqgJ81BHWY1nFrBMlHF2jEdwCvcKR4fwfXN9RujAG-6OoaP3wHcvq6WcM2JuXvRccC0U9Y=s900-c-k-c0x00ffffff-no-rj",
-            type: "m3u8",
-            source: "https://partneta.cdn.mgmlcdn.com/omsport/smil:omsport.stream.smil/chunklist_b900000.m3u8"
-        }, {
-            id: 10,
-            name: "عالم غامبول",
-            category: "kids",
-            logo: "https://upload.wikimedia.org/wikipedia/ar/3/32/The_Amazing_World_of_Gumball%28wikiar%29.png",
-            type: "youtube",
-            source: "https://youtu.be/W8a4yXFozs0"
-        }, {
-            id: 10,
-            name: "توم وجيري",
-            category: "kids",
-            logo: "https://aboutmsr.com/wp-content/uploads/2025/04/IMG_5153.webp",
-            type: "youtube",
-            source: "https://youtu.be/rEKifG2XUZg"
-        }, {
-            id: 10,
-            name: "طيور الجنة",
-            category: "kids",
-            logo: "https://play-lh.googleusercontent.com/exWWqBy0k0q4PjS0B7g2KgGWPuPZ4pz2pvDs6jmzHSPcFYrYCHKxAZthpd5gLzsV7g=w600-h300-pc0xffffff-pd",
-            type: "youtube",
-            source: "https://youtu.be/dNM1soKIksU"
-        }, {
-            id: 57,
-            name: "قناة كارتون نتورك بالعربية",
-            category: "kids",
-            logo: "https://yt3.googleusercontent.com/qEZqD4AyGlMCHDKurKPtcSpUpH0O7fsmGesysGipg4FD6XD9ehZHhaBN9VzIC49wk2kQHdea4g=s900-c-k-c0x00ffffff-no-rj",
-            type: "iframe",
-            source: "https://ok.ru/videoembed/10367353495046"
-        }, {
-            id: 55,
-            name: "قناة المهرية",
-            category: "entertainment",
-            logo: "https://yt3.googleusercontent.com/AZXCQjFXLiHSlonFtCwNqcbs0pK4OKyiGBQhp_yPeXAPt6mX0f7MKybBWGez7iCMqlxAGSfp=s900-c-k-c0x00ffffff-no-rj",
-            type: "m3u8",
-            source: "https://starmenajo.com/hls/almahriah/index.m3u8"
-        }, {
-            id: 10,
-            name: "شباب البومب",
-            category: "entertainment",
-            logo: "https://i.ytimg.com/vi/ok3AFsfwVMc/hqdefault.jpg",
-            type: "youtube",
-            source: "https://youtu.be/kshasUUHrug"
-        }, {
-            id: 11,
-            name: "قناة حضرموت",
-            category: "news",
-            logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVPeDj8RgW3IvzqUtF9n70oqIfF47JSgc6eg&s",
-            type: "iframe",
-            source: "https://player.twitch.tv/?channel=hadramout1&parent=hadhramaut.tv"
-        }, {
-            id: 12,
-            name: "ناشونال جيوغرافيك",
-            category: "documentary",
-            logo: "https://i.ibb.co/GQBX9t9j/unnamed.png",
-            type: "m3u8",
-            source: "https://streamer1.qna.org.qa/148133202_live/148133202_63.sdp/chunklist_w1946178961.m3u8"
-        },
+function toggleMode() {
+  document.body.classList.toggle('light-mode');
+}
 
-        // قنوات إخبارية إضافية
-        {
-            id: 13,
-            name: "سكاي نيوز عربية",
-            category: "news",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-27-31-365.jpg",
-            type: "m3u8",
-            source: "https://stream.skynewsarabia.com/ott/ott.m3u8"
-        }, {
-            id: 14,
-            name: "الجزيرة مباشر",
-            category: "news",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984288293657266075852379588.jpg",
-            type: "m3u8",
-            source: "https://live-hls-web-ajm.getaj.net/AJM/index.m3u8"
-        }, {
-            id: 15,
-            name: "العربية الحدث",
-            category: "news",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-25-15-601.jpg",
-            type: "m3u8",
-            source: "https://av.alarabiya.net/alarabiapublish/alhadath.smil/playlist.m3u8"
-        }, {
-            id: 16,
-            name: "RT عربية",
-            category: "news",
-            logo: "https://www.web24iptv.online/img/rt/russia-today-arabic.webp",
-            type: "m3u8",
-            source: "https://rt-arb.rttv.com/live/rtarab/playlist_4500Kb.m3u8"
-        }, {
-            id: 17,
-            name: "الميادين",
-            category: "news",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-34-32-115.jpg",
-            type: "m3u8",
-            source: "https://mdnlv.cdn.octivid.com/almdn/smil:mpegts.stream.smil/playlist.m3u8"
-        }, {
-            id: 18,
-            name: "الشرق للاخبار",
-            category: "news",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2023/01/picsart_23-01-27_17-31-35-110.jpg",
-            type: "m3u8",
-            source: "https://svs.itworkscdn.net/bloomberarlive/bloomberg.smil/playlist_dvr.m3u8"
-        },
+function filterChannels(category) {
+  const channels = document.querySelectorAll('.channel');
+  channels.forEach(channel => {
+    if (category === 'all' || channel.dataset.category === category) {
+      channel.style.display = 'flex';
+    } else {
+      channel.style.display = 'none';
+    }
+  });
+}
 
-        // قنوات رياضية إضافية
-        {
-            id: 19,
-            name: "دبي الرياضية 3",
-            category: "sport",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984281029901900757029355522.jpg",
-            type: "m3u8",
-            source: "https://dmitwlvvll.cdn.mgmlcdn.com/dubaisportshd5/smil:dubaisportshd5.smil/chunklist.m3u8"
-        }, {
-            id: 20,
-            name: "دبي راسنغ",
-            category: "sport",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad9842811294758081103149484478.jpg",
-            type: "m3u8",
-            source: "https://dmisdracta.cdn.mgmlcdn.com/events/smil:events.stream.smil/chunklist.m3u8"
-        }, {
-            id: 21,
-            name: "دبي راسنغ 2",
-            category: "sport",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad9842811294758081103149484478.jpg",
-            type: "m3u8",
-            source: "https://dmithrvllta.cdn.mgmlcdn.com/dubairacing/smil:dubairacing.smil/chunklist.m3u8"
-        }, {
-            id: 22,
-            name: "الشارقة الرياضية",
-            category: "sport",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad9842812291006983732572860675.jpg",
-            type: "m3u8",
-            source: "https://svs.itworkscdn.net/smc4sportslive/smc4.smil/playlist.m3u8"
-        },
+const video = document.getElementById('video');
+let hls;
 
-        // قنوات أطفال إضافية
-        {
-            id: 33,
-            name: "MBC 3",
-            category: "kids",
-            logo: "https://yt3.googleusercontent.com/pFJzLofqt5PA02i2ccrXMyDqxrJwxYYgV0R2gzyCyxDaES9qjAvmS0kHdUxva8vEJsCq_hkCvw=s160-c-k-c0x00ffffff-no-rj",
-            type: "iframe",
-            source: "https://can2025.aflam4you.net/playeraf.php?vid=17&aflam_s=1&aflam_k=1144665654423324"
-        }, {
-            id: 23,
-            name: "أطفال ومواهب",
-            category: "kids",
-            logo: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Atfal1.jpg",
-            type: "m3u8",
-            source: "https://5aafcc5de91f1.streamlock.net/atfal1.com/atfal2/playlist.m3u8"
-        }, {
-            id: 24,
-            name: "رؤيا كيدز",
-            category: "kids",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984283291678699179921130472.jpg",
-            type: "m3u8",
-            source: "https://playlist.fasttvcdn.com/pl/ptllxjd03j6g9oxxjdfapg/roya-kids-originals/playlist.m3u8"
-        }, {
-            id: 25,
-            name: "ماشا والدب",
-            category: "kids",
-            logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVXQwXnxTuoSX4GBy-VlEuYg5nDaRewMkPyw&s",
-            type: "youtube",
-            source: "https://youtu.be/Ho3Y3X1JZp8"
-        },
+function playChannel(src) {
+  if (hls) {
+    hls.destroy();
+  }
+  if (Hls.isSupported()) {
+    hls = new Hls();
+    hls.loadSource(src);
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      video.muted = false;
+      video.play();
+    });
+  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = src;
+    video.addEventListener('loadedmetadata',function() {
+      video.muted = false;
+      video.play();
+    });
+  }
+}
 
-        // قنوات دينية إضافية
-        {
-            id: 26,
-            name: "السنة النبوية",
-            category: "religious",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984284295763149471188527240.jpg",
-            type: "m3u8",
-            source: "https://cdn-globecast.akamaized.net/live/eds/saudi_sunnah/hls_roku/index.m3u8"
-        }, {
-            id: 27,
-            name: "إذاعة القرآن الكريم",
-            category: "religious",
-            logo: "https://i.ibb.co/gM3d9v05/fullhd-ef572438fffe8669b91c090d495bee55e7a4808c.png",
-            type: "m3u8",
-            source: "https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8"
-        }, {
-            id: 28,
-            name: "اقراء",
-            category: "religious",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad98428529284562670066395869.jpg",
-            type: "m3u8",
-            source: "https://playlist.fasttvcdn.com/pl/dlkqw1ftuvuuzkcb4pxdcg/Iqraafasttv3/playlist.m3u8"
-        }, {
-            id: 29,
-            name: "اقراء قرآن",
-            category: "religious",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad98428529284562670066395869.jpg",
-            type: "m3u8",
-            source: "https://playlist.fasttvcdn.com/pl/dlkqw1ftuvuuzkcb4pxdcg/Iqraafasttv2/playlist.m3u8"
-        }, {
-            id: 30,
-            name: "مكة",
-            category: "religious",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984286296704368287364149598.jpg",
-            type: "m3u8",
-            source: "https://media2.streambrothers.com:1936/8122/8122/playlist.m3u8"
-        }, {
-            id: 31,
-            name: "نور دبي",
-            category: "religious",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984287294559215033069411420.jpg",
-            type: "m3u8",
-            source: "https://dmiffthftl.cdn.mangomolo.com/noordubaitv/smil:noordubaitv.smil/chunklist.m3u8"
-        }, {
-            id: 32,
-            name: "الكويت اثراء",
-            category: "religious",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984287291560428172345528644.jpg",
-            type: "m3u8",
-            source: "https://kwtethta.cdn.mangomolo.com/eth/smil:eth.stream.smil/chunklist.m3u8"
-        },
+const channelElements = document.querySelectorAll('.channel');
+channelElements.forEach(channel => {
+  channel.addEventListener('click', () => {
+    const src = channel.getAttribute('data-src');
+    playChannel(src);
 
-        // قنوات ترفيهية ومنوعات إضافية
-        {
-            id: 33,
-            name: "MBC 5",
-            category: "MBC",
-            logo: "https://yt3.googleusercontent.com/TYmRZqLTbgm6c8P0_RaxZgbyypEdYglExecex_mP5Brpj_pmuPb4202AqH_4z34_0ERL_mgX=s900-c-k-c0x00ffffff-no-rj",
-            type: "iframe",
-            source: "https://www.web24iptv.online/pl/m3?ch=mbc5"
-        },
-        {
-            id: 33,
-            name: "MBC 4",
-            category: "MBC",
-            logo: "https://iconape.com/wp-content/files/zd/20400/png/mbc-4-copy-01.png",
-            type: "iframe",
-            source: "https://www.web24iptv.online/pl/m3?ch=mbc4"
-        },
-          {
-            id: 33,
-            name: "MBC 2",
-            category: "MBC",
-            logo: "https://iconape.com/wp-content/files/ur/20647/png/mbc2-01.png",
-            type: "iframe",
-            source: "https://www.web24iptv.online/pl/m?ch=mbc2_1"
-        },
-          {
-            id: 33,
-            name: "MBC MAX",
-            category: "MBC",
-            logo: "https://logodix.com/logo/836790.png",
-            type: "iframe",
-            source: "https://www.web24iptv.online/pl/m?ch=mbcmax_2"
-        },
-          {
-            id: 34,
-            name: "رؤيا",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984282296240009843345610680.jpg",
-            type: "m3u8",
-            source: "https://royatv-live.daioncdn.net/royatv/royatv.m3u8"
-        }, {
-            id: 35,
-            name: "رؤيا كوميدي",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984281297063586588031513654.jpg",
-            type: "m3u8",
-            source: "https://playlist.fasttvcdn.com/pl/toa2uuhhygheuly7xtuqrg/roya-comedy/playlist.m3u8"
-        }, {
-            id: 36,
-            name: "رؤيا دراما",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984281297063586588031513654.jpg",
-            type: "m3u8",
-            source: "https://playlist.fasttvcdn.com/pl/a2le4pbpa6rpzv147haf4w/drama/playlist.m3u8"
-        }, {
-            id: 37,
-            name: "رؤيا كيتشن",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984281297063586588031513654.jpg",
-            type: "m3u8",
-            source: "https://playlist.fasttvcdn.com/pl/toa2uuhhygheuly7xtuqrg/roya-kitchen/playlist.m3u8"
-        }, {
-            id: 38,
-            name: "المستقبل",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/images281294480125629386148665.jpg",
-            type: "m3u8",
-            source: "https://live.kwikmotion.com/futurelive/ftv.smil/playlist.m3u8"
-        }, {
-            id: 39,
-            name: "mtv",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984284296982084874550376107.jpg",
-            type: "m3u8",
-            source: "https://hms.pfs.gdn/v1/broadcast/mtv/playlist.m3u8"
-        }, {
-            id: 40,
-            name: "one tv",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984285296938689554179198073.jpg",
-            type: "m3u8",
-            source: "https://hms.pfs.gdn/v1/broadcast/one/playlist.m3u8"
-        }, {
-            id: 41,
-            name: "TL لبنان",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984283293585477158857075091.jpg",
-            type: "m3u8",
-            source: "https://cdn.catiacast.video/abr/ed8f807e2548db4507d2a6f4ba0c4a06/playlist.m3u8"
-        },
-
-        {
-            id: 43,
-            name: "MBC Drama+ ",
-            category: "MBC",
-            logo: "https://media0087.elcinema.com/tvguide/1131_1.png",
-            type: "iframe",
-            source: "https://www.web24iptv.online/pl/m3?ch=mbcsd"
-        }, {
-            id: 44,
-            name: "تلفزيون سوريا",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/defimage3969569012490519141.png",
-            type: "m3u8",
-            source: "https://svs.itworkscdn.net/syriatvlive/syriatv.smil/playlist_dvr.m3u8"
-        }, {
-            id: 43,
-            name: "MBC Drama ",
-            category: "MBC",
-            logo: "https://yt3.googleusercontent.com/Ek6Oqg1_PHR-B9OaAc6GXIOOVH0rnNCXoObq-uvxzLN2BEUZVCwkFauVfdxthbpOxCWf0DoWgA=s900-c-k-c0x00ffffff-no-rj",
-            type: "iframe",
-            source: "https://www.web24iptv.online/pl/m4?ch=mbcd"
-        }, {
-            id: 45,
-            name: "سوريا الثانية",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/images2395502146540845444.jpeg",
-            type: "m3u8",
-            source: "https://live.kwikmotion.com/syriatv02live/syriatv02.smil/playlist.m3u8"
-        }, {
-            id: 46,
-            name: "LTV SYRIA",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984281293318575537335798155.jpg",
-            type: "m3u8",
-            source: "https://p-ltv.akamaized.net/ltv/ltv.m3u8"
-        }, {
-            id: 47,
-            name: "العربية الاقتصادية",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad984282298921269910408956068.jpg",
-            type: "m3u8",
-            source: "https://live.alarabiya.net/alarabiapublish/aswaaq.smil/playlist.m3u8"
-        }, {
-            id: 48,
-            name: "العربية برامج",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad98457053676586798219.jpg",
-            type: "m3u8",
-            source: "https://d1j4r34gq3qw9y.cloudfront.net/out/v1/96804f3a14864641a21c25e8ca9afb74/index.m3u8"
-        }, {
-            id: 49,
-            name: "المشهد",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/04/d8aad986d8b2d98ad9843112237656482295601.jpg",
-            type: "m3u8",
-            source: "https://bcovlive-a.akamaihd.net/20c3ca22be3c4f03b30afbf3c92cfd14/ap-south-1/6313884884001/playlist.m3u8"
-        }, {
-            id: 50,
-            name: "اليوم",
-            category: "entertainment",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984289295645141147891945658.jpg",
-            type: "m3u8",
-            source: "https://iko-live.akamaized.net/AlyuamTV/master.m3u8"
-        },
-        // قنوات وثائقية إضافية
-        {
-            id: 51,
-            name: "الجزيرة الوثائقية",
-            category: "documentary",
-            logo: "https://rashednet1.wordpress.com/wp-content/uploads/2025/05/d8aad986d8b2d98ad984288297402425690659400800.jpg",
-            type: "m3u8",
-            source: "https://live-hls-web-ajd.getaj.net/AJD/index.m3u8"
-        }, {
-            id: 10,
-            name: "القرآن الكريم كاملاً",
-            category: "Lessons",
-            logo: "https://i.ytimg.com/vi/_uVYDpin8fs/maxresdefault.jpg",
-            type: "youtube",
-            source: "https://youtu.be/_uVYDpin8fs"
-        }, {
-            id: 10,
-            name: "سورة البقرة كاملة",
-            category: "Lessons",
-            logo: "https://i.ytimg.com/vi/P0uaLRO6V1U/maxresdefault.jpg",
-            type: "youtube",
-            source: "https://youtu.be/P0uaLRO6V1U"
-        }, {
-            id: 10,
-            name: "سيجعل الله بعد عسرٍ يسرًا",
-            category: "Lessons",
-            logo: "https://i.ibb.co/mCChsWb8/2025-10-19-232235.jpg",
-            type: "youtube",
-            source: "https://youtu.be/JL5336tFBfk"
-        }, {
-            id: 10,
-            name: "بودكاست نضج",
-            category: "Lessons",
-            logo: "https://i.ytimg.com/vi/POmFXsJB0f0/mqdefault.jpg",
-            type: "youtube",
-            source: "https://youtu.be/POmFXsJB0f0"
-        }, {
-            id: 10,
-            name: "نساء ذكرهن النبي ﷺ",
-            category: "Lessons",
-            logo: "https://i.ytimg.com/vi/rCuJH6KhxfM/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AHUBoAC3gOKAgwIABABGFQgVChlMA8=&rs=AOn4CLCHHXVkddUKKb9zEJEp0QVXqnBkCQ",
-            type: "youtube",
-            source: "https://youtu.be/rCuJH6KhxfM"
-        }, {
-            id: 10,
-            name: "بصمة سلفي",
-            category: "Lessons",
-            logo: "https://pbs.twimg.com/media/G2Hg2wfXwAEu5ol.jpg:large",
-            type: "youtube",
-            source: "https://youtu.be/T0d2pMV0J-s"
-        }
-
-
-    ];
-
-    // المتغيرات العامة
-    let currentChannel = null;
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    let currentCategory = 'all';
-    let hls = null;
-
-    // تهيئة التطبيق
-    function init() {
-        renderChannels();
-        setupEventListeners();
-
-        // تشغيل القناة الأولى افتراضياً
-        if (channelsData.length > 0) {
-            playChannel(channelsData[0]);
-        }
+    const liveLabel = document.querySelector('.live');
+    if (liveLabel) {
+      liveLabel.style.display = 'inline-block';
+      clearTimeout(window.liveTimeout);
+      window.liveTimeout = setTimeout(() => {
+        liveLabel.style.display = 'none';
+      }, 60000);
     }
 
-    // عرض القنوات
-    function renderChannels() {
-        const channelsGrid = document.getElementById('channelsGrid');
-        channelsGrid.innerHTML = '';
+    // التمرير إلى المشغل
+    document.querySelector('.player').scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
-        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+// تشغيل القناة الافتراضية
+playChannel('https://live-hls-apps-aja-v3-fa.getaj.net/AJA/index.m3u8');
 
-        const filteredChannels = channelsData.filter(channel => {
-            const matchesCategory = currentCategory === 'all' || channel.category === currentCategory;
-            const matchesSearch = channel.name.toLowerCase().includes(searchTerm);
-            return matchesCategory && matchesSearch;
-        });
-
-        if (filteredChannels.length === 0) {
-            channelsGrid.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px;">
-                    <i class="fas fa-tv" style="font-size: 50px; color: var(--primary); margin-bottom: 15px;"></i>
-                    <p>لا توجد قنوات متاحة</p>
-                </div>
-            `;
-            return;
-        }
-
-        filteredChannels.forEach(channel => {
-            const isFavorite = favorites.includes(channel.id);
-
-            const channelCard = document.createElement('div');
-            channelCard.className = 'channel-card';
-            channelCard.innerHTML = `
-                <button class="favorite-btn ${isFavorite ? 'active' : ''}" data-id="${channel.id}">
-                    <i class="fas fa-star"></i>
-                </button>
-                <img src="${channel.logo}" alt="${channel.name}" class="channel-logo" onerror="this.src='https://via.placeholder.com/160x100/2d2d3a/ffffff?text=TV'">
-                <div class="channel-info">
-                    <div class="channel-name">${channel.name}</div>
-                    <div class="channel-category">
-                        <i class="fas fa-tag"></i>
-                        <span>${getCategoryName(channel.category)}</span>
-                    </div>
-                </div>
-            `;
-
-            channelCard.addEventListener('click', () => playChannel(channel));
-            channelsGrid.appendChild(channelCard);
-        });
-
-        // إضافة مستمعي الأحداث لأزرار المفضلة
-        document.querySelectorAll('.favorite-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleFavorite(parseInt(btn.dataset.id));
-            });
-        });
-    }
-
-    // تشغيل القناة
-    function playChannel(channel) {
-        currentChannel = channel;
-
-        // تحديث واجهة المستخدم
-        document.getElementById('current-channel').textContent = channel.name;
-        updateFavoriteButton();
-
-        // إظهار مؤشر التحميل
-        const videoPlayer = document.getElementById('video-player');
-        videoPlayer.innerHTML = '<div style="display:flex; justify-content:center; align-items:center; height:100%;"><div class="loading"></div></div>';
-
-        // تشغيل القناة حسب نوعها
-        setTimeout(() => {
-            if (channel.type === 'm3u8') {
-                playM3U8(channel.source);
-            } else if (channel.type === 'youtube') {
-                playYouTube(channel.source);
-            } else if (channel.type === 'iframe') {
-                playIframe(channel.source);
-            }
-        }, 500);
-
-        // إظهار إشعار
-        showToast(`جاري تشغيل: ${channel.name}`);
-
-        // إظهار الزر فقط إذا كانت القناة iframe
-        const openBtn = document.getElementById('openExternalBtn');
-        if (channel.type === 'iframe') {
-            openBtn.style.display = 'flex';
-        } else {
-            openBtn.style.display = 'none';
-        }
-
-    }
-
-    // تشغيل قناة M3U8
-    function playM3U8(source) {
-        const videoPlayer = document.getElementById('video-player');
-
-        // تنظيف مشغل HLS السابق
-        if (hls) {
-            hls.destroy();
-        }
-
-        // إنشاء عنصر فيديو جديد
-        videoPlayer.innerHTML = '<video id="video" controls autoplay style="width:100%; height:100%;"></video>';
-        const video = document.getElementById('video');
-
-        if (Hls.isSupported()) {
-            hls = new Hls();
-            hls.loadSource(source);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                video.play().catch(e => {
-                    console.error('خطأ في التشغيل:', e);
-                    showToast('خطأ في تشغيل القناة');
-                });
-            });
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = source;
-            video.addEventListener('loadedmetadata', function() {
-                video.play().catch(e => {
-                    console.error('خطأ في التشغيل:', e);
-                    showToast('خطأ في تشغيل القناة');
-                });
-            });
-        }
-    }
-
-    // تشغيل قناة يوتيوب
-    function playYouTube(source) {
-        const videoPlayer = document.getElementById('video-player');
-        const videoId = extractYouTubeId(source);
-
-        if (videoId) {
-            videoPlayer.innerHTML = `
-                <iframe 
-                    src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0" 
-                    frameborder="0" 
-                    allow="autoplay; encrypted-media" 
-                    allowfullscreen
-                    style="width:100%; height:100%;">
-                </iframe>
-            `;
-        } else {
-            videoPlayer.innerHTML = '<div style="display:flex; justify-content:center; align-items:center; height:100%; color:white;">رابط يوتيوب غير صالح</div>';
-        }
-    }
-
-    // تشغيل قناة iframe
-    function playIframe(source) {
-        const videoPlayer = document.getElementById('video-player');
-        videoPlayer.innerHTML = `
-            <iframe 
-                src="${source}" 
-                frameborder="0" 
-                allowfullscreen sandbox="allow-scripts allow-same-origin allow-presentation"
-                style="width:100%; height:100%;">
-            </iframe>
-        `;
-    }
-
-    // استخراج معرف فيديو يوتيوب من الرابط
-    function extractYouTubeId(url) {
-        const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-        const match = url.match(regExp);
-        return (match && match[7].length === 11) ? match[7] : false;
-    }
-
-    // تبديل المفضلة
-    function toggleFavorite(channelId) {
-        if (favorites.includes(channelId)) {
-            favorites = favorites.filter(id => id !== channelId);
-            showToast('تمت الإزالة من المفضلة');
-        } else {
-            favorites.push(channelId);
-            showToast('تمت الإضافة إلى المفضلة');
-        }
-
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        renderChannels();
-        updateFavoriteButton();
-    }
-
-    // تحديث زر المفضلة
-    function updateFavoriteButton() {
-        const favoriteBtn = document.getElementById('favoriteChannelBtn');
-        if (!currentChannel) return;
-
-        const isFavorite = favorites.includes(currentChannel.id);
-        favoriteBtn.innerHTML = isFavorite ?
-            '<i class="fas fa-star"></i><span>إزالة من المفضلة</span>' :
-            '<i class="far fa-star"></i><span>إضافة للمفضلة</span>';
-    }
-
-    // إعداد مستمعي الأحداث
-    function setupEventListeners() {
-       document.getElementById('openExternalBtn').addEventListener('click', function () {
-           if (currentChannel && currentChannel.type === 'iframe') {
-               window.open(currentChannel.source, '_blank');
-           }
-       });
-
-       
-        // تبديل الوضع الليلي/النهاري
-        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-
-        // البحث عن القنوات
-        document.getElementById('searchInput').addEventListener('input', renderChannels);
-
-        // تصفية القنوات حسب الفئة
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentCategory = this.dataset.category;
-                renderChannels();
-            });
-        });
-
-        // زر المفضلة
-        document.getElementById('favoriteChannelBtn').addEventListener('click', function() {
-            if (currentChannel) {
-                toggleFavorite(currentChannel.id);
-            }
-        });
-
-
-    }
-
-    // تبديل الوضع الليلي/النهاري
-    function toggleTheme() {
-        document.body.classList.toggle('dark-mode');
-        const themeIcon = document.querySelector('#themeToggle i');
-        themeIcon.className = document.body.classList.contains('dark-mode') ?
-            'fas fa-sun' : 'fas fa-moon';
-    }
-
-    // عرض إشعار
-    function showToast(message) {
-        const toast = document.getElementById('toast');
-        toast.textContent = message;
-        toast.classList.add('show');
-
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
-    }
-
-    // الحصول على اسم الفئة بالعربية
-    function getCategoryName(category) {
-        const categories = {
-            'all': 'الكل',
-            'news': 'إخبارية',
-            'sport': 'رياضية',
-            'entertainment': 'ترفيهية',
-            'kids': 'أطفال',
-            'religious': 'دينية',
-            'documentary': 'وثائقية'
-        };
-        return categories[category] || category;
-    }
-
-    // تهيئة التطبيق عند تحميل الصفحة
-    window.addEventListener('DOMContentLoaded', init);
+// إخفاء كلمة مباشر بعد 30 ثانية
+window.liveTimeout = setTimeout(() => {
+  const liveLabel = document.querySelector('.live');
+  if (liveLabel) {
+    liveLabel.style.display = 'none';
+  }
+}, 30000);
 </script>
+
+</body>
+</html>
+
+</div>
+  <script src="assets\js\vendor\jquery-1.11.3.min.js"></script>
+  <script src='assets\js\vendor\bootstrap.min.js'></script>
+  <script src='assets\js\vendor\plugin.js'></script>
+  <script src='assets\js\variable.js'></script>
+  <script src='assets\js\map.js'></script>
+  <script src='assets\js\main.js'></script>
+  <script src='assets\js\demo.js'></script>
+  <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+  </script>  
+</body>
+</html>
