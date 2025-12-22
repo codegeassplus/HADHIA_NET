@@ -1,50 +1,172 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شاهد قنواتك المفضلة</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #000;
-            color: #d36e2d;
-            text-align: center;
-            padding: 50px;
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 8px rgba(211, 110, 45, 0.6);
-        }
-        button {
-            background-color: #d36e2d;
-            color: #fff;  /* أبيض لتباين أفضل */
-            border: none;
-            padding: 18px 40px;
-            font-size: 1.3em;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(211, 110, 45, 0.4);
-            font-weight: bold;
-        }
-        button:hover {
-            background-color: #e57f3e;  /* لون أفتح قليلاً عند الـ hover */
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(211, 110, 45, 0.6);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إذاعة سيون - بث مباشر 24/7</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Cairo",sans-serif;
+}
+body{
+    background:#000;
+    color:#fff;
+    padding:20px;
+}
+
+/* هيدر */
+header{
+    text-align:center;
+    padding:30px 0 20px;
+    animation:fade 1.5s ease;
+}
+header h1{
+    font-size:2.6rem;
+    font-weight:700;
+    color:#d36e2d;
+    margin-bottom:8px;
+}
+header p{
+    color:#cfcfcf;
+    font-size:1.2rem;
+}
+
+/* مشغل الراديو */
+.player-section{
+    background:rgba(211,110,45,0.12);
+    border:1px solid rgba(211,110,45,0.5);
+    border-radius:20px;
+    padding:30px;
+    margin:30px auto;
+    max-width:600px;
+    text-align:center;
+    animation:fade-up 1.2s ease;
+}
+.player-section h2{
+    color:#d36e2d;
+    margin-bottom:15px;
+    font-size:1.6rem;
+}
+#audio-player{
+    width:100%;
+    max-width:450px;
+    margin:20px auto;
+}
+.controls{
+    margin-top:20px;
+}
+.play-btn{
+    background:#d36e2d;
+    color:#fff;
+    border:none;
+    padding:14px 35px;
+    border-radius:50px;
+    font-size:1.1rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+.play-btn:hover{
+    background:#e57f3e;
+    transform:scale(1.05);
+}
+.status{
+    margin-top:15px;
+    font-size:1rem;
+    color:#d36e2d;
+}
+
+/* معلومات إضافية */
+.info-box{
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(211,110,45,0.4);
+    border-radius:15px;
+    padding:20px;
+    margin-top:30px;
+    text-align:center;
+}
+.info-box p{
+    font-size:1.1rem;
+    color:#eee;
+    line-height:1.7;
+}
+
+/* تواصل */
+.contact-section{
+    margin-top:40px;
+    text-align:center;
+}
+.whatsapp-number{
+    display:inline-block;
+    background:#25D366;
+    color:#fff;
+    padding:12px 30px;
+    border-radius:50px;
+    margin:10px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+.whatsapp-number:hover{
+    transform:scale(1.08);
+}
+
+/* أنيميشن */
+@keyframes fade{0%{opacity:0;}100%{opacity:1;}}
+@keyframes fade-up{0%{opacity:0;transform:translateY(15px);}100%{opacity:1;transform:translateY(0);}}
+</style>
 </head>
 <body>
-    <h1>استمع الآن إلى الراديو بسهولة</h1>
-    <button onclick="window.open('http://e.mytuner-radio.com/embed/sayun-radio-dh-sywwn-432797', '_blank')">افتح الآن</button>
+
+<header>
+    <h1>إذاعة سيون ⚡</h1>
+    <p> 24/7</p>
+</header>
+
+<section class="player-section">
+    <h2>استمع الآن مباشرة</h2>
+    <audio id="audio-player" controls autoplay preload="auto">
+        <source src="https://s2.radio.co/s26c62011e/listen" type="audio/mpeg">
+        متصفحك لا يدعم تشغيل الصوت.
+    </audio>
+    <div class="controls">
+        <button class="play-btn" onclick="document.getElementById('audio-player').play()">تشغيل</button>
+        <button class="play-btn" onclick="document.getElementById('audio-player').pause()">إيقاف</button>
+    </div>
+    <div class="status">جاري الاتصال بالبث...</div>
+</section>
+
+
+
+
+
+
+
+<script>
+    // تحسين تجربة التشغيل التلقائي
+    const audio = document.getElementById('audio-player');
+    const status = document.querySelector('.status');
+
+    audio.play().then(() => {
+        status.textContent = "جاري التشغيل... 🎶";
+    }).catch(() => {
+        // بعض المتصفحات (مثل Chrome) تمنع الـ autoplay بدون تفاعل المستخدم
+        status.textContent = "اضغط 'تشغيل' لبدء البث";
+    });
+
+    audio.onplaying = () => {
+        status.textContent = "جاري التشغيل... 🎶";
+    };
+    audio.onpause = () => {
+        status.textContent = "تم الإيقاف";
+    };
+</script>
+
 </body>
 </html>
