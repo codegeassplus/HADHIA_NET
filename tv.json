@@ -8,27 +8,27 @@
 
 {
     "name": "Bein Sports 1 (m)",
-    "url": "https://uu.kora-live-live.com/albaplayer/sports-1/"
+    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel1-stream.Iil71.m3u8"
   },
 
   {
     "name": "Bein Sports 2 (m)",
-    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel2-stream.Iil18.m3u8"
+    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel2-stream.Iil71.m3u8"
   },
 
   {
     "name": "Bein Sports 3 (m)",
-    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel3-stream.Iil18.m3u8"
+    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel3-stream.Iil71.m3u8"
   },
 
   {
     "name": "Bein Sports 4 (m)",
-    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel4-stream.Iil18.m3u8"
+    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel4-stream.Iil71.m3u8"
   },
 
   {
     "name": "Bein Sports 5 (m)",
-    "url": "https://technomaster.pro/hls/t0t.cIlchannel5-stream.Iil18.m3u8"
+    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel5-stream.Iil71.m3u8"
   },
 
 
@@ -97,19 +97,19 @@
 
 {
     "name": " 1 ثمانية ",
-    "url":"https://technomaster.pro/hls/a0a.l.cIlchannel6-stream.Iil18.m3u8"
+    "url":"https://technomaster.pro/hls/a0a.l.cIlchannel6-stream.Iil71.m3u8"
   },
 
 
 {
     "name": " 2 ثمانية",
-    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel7-stream.Iil18.m3u8"
+    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel7-stream.Iil71.m3u8"
   },
 
 
 {
     "name": " الكاس ",
-    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel8-stream.Iil18.m3u8"
+    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel8-stream.Iil71.m3u8"
   },
 
 {
@@ -262,10 +262,7 @@
     "url": "https://ok.ru/videoembed/10367353495046"
   },
 
-{
-    "name": "MBC 3",
-    "url": "https://can2025.aflam4you.net/playeraf.php?vid=17&aflam_s=1&aflam_k=1144665654423324"
-  },
+
 
 
 {
@@ -309,7 +306,7 @@
 
   {
     "name": "MBC 3",
-    "url": "https://can2025.aflam4you.net/playeraf.php?vid=17&aflam_s=1&aflam_k=1144665654423324"
+    "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-3-usa/5d58265a862a476dc7f97694addb5ded/index.m3u8"
   },
   
    {
