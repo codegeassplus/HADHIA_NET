@@ -1,153 +1,33 @@
 
 [
 
-   {
-    "name": "<===القنوات الرياضية===>",
+   
+
+
+{
+    "name": "<===القنوات رياضة===>",
     "url":"https://youtu.be/5giOvDXxWzE?si=_k4cL95IyQhAgvxh"
   },
 
-{
-    "name": "Bein Sports 1 (m)",
-    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel1-stream.Iil94.m3u8"
-  },
-
-  {
-    "name": "Bein Sports 2 (m)",
-    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel2-stream.Iil94.m3u8"
-  },
-
-  {
-    "name": "Bein Sports 3 (m)",
-    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel3-stream.Iil94.m3u8"
-  },
-
-  {
-    "name": "Bein Sports 4 (m)",
-    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel4-stream.Iil94.m3u8"
-  },
-
-  {
-    "name": "Bein Sports 5 (m)",
-    "url": "https://technomaster.pro/hls/t0t.cIlchannel5-stream.Iil42.m3u8"
-  },
-
-
-  {
-    "name": "Bein Sports 1 (low)",
-    "url":"https://mainc.fntvs.net:8443/live/kora/78437827/736.m3u8"
-  },
-
-
- {
-    "name": "Bein Sports 2 (low) ",
-    "url": "http://135.125.109.73:9000/beinsport2_.m3u8"
-  },
-
-
-
- {
-    "name": "Bein Sports 3 (low)",
-    "url": "http://135.125.109.73:9000/beinsport3_.m3u8"
-  },
-
-
 
 {
-    "name": "Bein Sports 4 (low)",
-    "url": "http://135.125.109.73:9000/beinsport4_.m3u8"
+    "name": "1-بي ان اسبورت",
+    "url": "https://playersbassam.blogspot.com/p/bein1pro.html"
   },
-
-
 {
-    "name": "Bein Sports 5 (low)",
-    "url": "http://135.125.109.73:9000/beinsport5_.m3u8"
-  },
-
-
-
-{
-    "name": "Bein Sports 6 (low)",
-    "url": "http://135.125.109.73:9000/beinsport6_.m3u8"
-  },
-
-
-
-{
-    "name": "Bein Sports 7 (low)",
-    "url": "http://135.125.109.73:9000/beinsport7_.m3u8"
-  },
-
-
-{
-    "name": "Bein Sports 8 (low)",
-    "url": "http://135.125.109.73:9000/beinsport8_.m3u8"
-  },
-
-
-
-{
-    "name": "Bein Sports 9 (low)",
-    "url": "http://135.125.109.73:9000/beinsport9_.m3u8"
-  },
-
-
-
-  
-  
-
-{
-    "name": " 1 ثمانية ",
-    "url":"https://technomaster.pro/hls/a0a.l.cIlchannel6-stream.Iil94.m3u8"
-  },
-
-
-{
-    "name": " 2 ثمانية",
-    "url":"https://technomaster.pro/hls/a0a.l.cIlchannel7-stream.Iil94.m3u8"
-  },
-
-
-{
-    "name": " الكاس ",
-    "url": "https://technomaster.pro/hls/a0a.l.cIlchannel8-stream.Iil71.m3u8"
+    "name": "2-بي ان اسبورت",
+    "url": "https://playersbassam.blogspot.com/p/bein2pro.html"
   },
 
 {
-    "name": "دبي الرياضية ",
-    "url": "https://dmitwlvvll.cdn.mgmlcdn.com/dubaisportshd/smil:dubaisportshd.smil/chunklist.m3u8"
+    "name": "3-بي ان اسبورت",
+    "url": "https://playersbassam.blogspot.com/p/bein3pro.html"
   },
 
 {
-    "name": "دبي الرياضية 3",
-    "url": "https://dmitwlvvll.cdn.mgmlcdn.com/dubaisportshd5/smil:dubaisportshd5.smil/chunklist.m3u8"
+    "name": "4-بي ان اسبورت",
+    "url": "https://playersbassam.blogspot.com/p/bein4pro.html"
   },
-
-
-{
-    "name": "دبي راسنغ",
-    "url": "https://dmisdracta.cdn.mgmlcdn.com/events/smil:events.stream.smil/chunklist.m3u8"
-  },
-
-  {
-    "name": "دبي راسنغ 2",
-    "url": "https://dmithrvllta.cdn.mgmlcdn.com/dubairacing/smil:dubairacing.smil/chunklist.m3u8"
-  },
-
-  {
-    "name": "الشارقة الرياضية",
-    "url": "https://svs.itworkscdn.net/smc4sportslive/smc4.smil/playlist.m3u8"
-  },
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -155,6 +35,9 @@
     "name": "<===القنوات الاخبار===>",
     "url":"https://youtu.be/5giOvDXxWzE?si=_k4cL95IyQhAgvxh"
   },
+
+
+
 
 
 {
@@ -170,6 +53,11 @@
 {
     "name": "الجزيرة",
     "url": "https://live-hls-apps-aja-v3-fa.getaj.net/AJA/index.m3u8"
+  },
+
+{
+    "name": "بي بي سي العربيه",
+    "url": "https://vs-hls-pushb-ww.live.cf.md.bbci.co.uk/x=4/i=urn:bbc:pips:service:bbc_arabic_tv/t=3840/v=pv10/b=1604032/main.m3u8"
   },
 
 
@@ -192,26 +80,27 @@
 
 
 {
-    "name": "شباب اليمن",
-    "url": "https://starmenajo.com/hls/yemenshabab/index.m3u8"
+    "name": "يمن شباب",
+    "url": "https://yemenshabab.site:13334/app/live/medialist_7806664055920539159_hls.m3u8"
+  },
+
+{
+    "name": "شباب الوادي",
+    "url": "https://live20.bozztv.com/akamaissh101/ssh101/qatn/playlist.m3u8"
   },
 
 {
     "name": "اليمن اليوم",
-    "url": "https://video.yementdy.tv/hls/yementoday_src.m3u8"
+    "url": "https://stream.yementv.tv/live/yementv/chunklist_1_video_PCjY34ES_llhls.m3u8?session=20_RPbzhsGw&_HLS_msn=2090&_HLS_part=9"
   },
 
 
 {
     "name": "عدن المستقلة",
-    "url": "https://player.restream.io/?token=e711e1267bec4b918cdc79138b225105"
+    "url": "https://euc12.playlist.ttvnw.net/v1/playlist/CsAGs7OoGauRZ_dFzohmoGA7PLf8DhH6xG6WVmNrP5o4Ujl7O7S-ZoTxsfK5kUWPgcKWceyNTHEcaSVoQmZjZaHBqrY-DAKDRuAk7JQ7IEwFHDXqqpCZASn5CIZ-QvQl6uffmdIEtZ5ngLi-9C1Ahs1R2dK3nP5KGcLibj8gRGtAWyN90SBl0sYPysGy6ILDUd6Asfihhoy5tOcm107wnUhAbxWTZG1k9bDqGbGExCV6IXeTkERYpdIEdk-HORbTDGn9YAvfwnP97OyzJca42LtwEzNIfoeyYgDW7-8CyPmVuKC9ykbkSOjCqM_fRL5tXqJHieYHLGhNaAdT2dKsaSqRikwKmX18jYrrMKjMZTx3B2v0H39NLpEHKLr8B44qop3hESlX3tsziJYxVIjMYSDmzUU_zMDVZI7AsEqPwjFZyRz-82MO3txykW98gH-l0q0krilWN9fnTvZbepZiOYAWsJXRCGpsnP9ufWKoBJPsMc56Mot9IFfJfZ9xeGZlINlrGkUukgHPg6WwrziCNePabg_4EsNul60hXZNo93QG-vYa5k46qQYIi7Esjx7JvsPiwmgZVVjxpG_cc1OMX8_9_cTGsm7Gdt1edKIssMpUZkXqBwcdPqOWVblBdCxfP4ZcisGmvfZmbxAtKGAVnOLEJI900tKpeaHzuhY1vzEO2mu99otL50h6lLht6UOR231s-kKCctNNmKPc3mmdlJzCcR1Yx1f7ljoTqwAwyC0KOJQ8QONwXpRwCeI1XRJgx2Ep7INkeLcMdFAFgwKxR0V8UcvvueaMsYtrYFCpOQ6QXuQB9muWkg0MdhyAcLFOF6FaCTaX3SCams7L7TcKSe0dqdTkjzgVQr1pFxG3HK09dl_hcSgQzTsCa2M8Ix-FjsKjWww6WH_gV-6tqgbj2dba9DWh5EA13CX3mNJ6p5zPzSt9fxlrCXM5A5dLNaYZqbT4vKMZ5mHx3l-nCRgl4wwBM8OaEdbRasIL__H35E1vrq456PO7JXMbJkiDXsg0JYoufj-1Rju03BGC3P-bbrMk6Vkz6O-zfHaaoM9oYvGRLDnPcLino8VSE93undmJ_FKAnj0PZfzo4kvpqrjY5_M-hhoMec_lTk4lSwknSEyMIAEqCWV1LXdlc3QtMjD2Dg.m3u8"
   },
 
 
-{
-    "name":  "قناة الاعتصام المحلية",
-    "url": "https://live20.bozztv.com/giatv/giatv-aletisamtv/aletisamtv/chunks.m3u8"
-  },
 
 
 {
@@ -232,19 +121,15 @@
     "url":"https://youtu.be/5giOvDXxWzE?si=_k4cL95IyQhAgvxh"
   },
 
-{
-    "name": " ماجد",
-    "url": "https://admn-live-cdn-lb.starzplayarabia.com/out/v1/admn_tv_enc/majid/majid_hls_nd/index.m3u8"
-  },
 
 {
     "name": " سبيستون",
-    "url": "https://can2025.aflam4you.net/playeraf.php?vid=3066&aflam_s=1&aflam_k=1144665654423324"
+    "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-spacetoon/d8382fb9ab4b2307058f12c7ea90db54/index.m3u8"
   },
 
 {
     "name": " عالم غامبول",
-    "url": "https://youtu.be/W8a4yXFozs0"
+    "url": "https://youtu.be/IT1IZpY7uzA"
   },
 
 {
@@ -254,13 +139,10 @@
 
 {
     "name": " طيور الجنة ",
-    "url": "https://youtu.be/dNM1soKIksU"
+    "url": "https://youtu.be/b9iZR_yTyGc"
   },
 
-{
-    "name": "  كارتون نتورك بالعربية ",
-    "url": "https://ok.ru/videoembed/10367353495046"
-  },
+
 
 
 
@@ -278,7 +160,7 @@
 
   {
     "name": "ماشا والدب",
-    "url": "https://youtu.be/Ho3Y3X1JZp8"
+    "url": "https://www.youtube.com/live/H9gs3X9ypnc?feature=shared"
   },
 
 
