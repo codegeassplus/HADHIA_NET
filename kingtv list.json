@@ -2,7 +2,12 @@
 
      {
         "category_id": "775623097",
-        "category_name": " الملك -- اسبورت",
+        "category_name": " البرق -- اسبورت",
+        "parent_id": 0
+    },
+     {
+        "category_id": "1666",
+        "category_name": "بي ان اسبورت ماكس",
         "parent_id": 0
     },
     {
